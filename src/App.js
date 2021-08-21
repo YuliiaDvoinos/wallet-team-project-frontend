@@ -1,7 +1,7 @@
 function App() {
   return (
     <div className="App">
-      <h1>team pjct</h1>
+      <h1>team project</h1>
     </div>
   );
 }
