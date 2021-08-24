@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as actions from './auth-actions';
-axios.defaults.baseURL = 'localhost:3000';
+axios.defaults.baseURL = 'http://localhost:4000/api';
+// axios.defaults.baseURL = "https://connections-api.herokuapp.com"
 
 const token = {
   set(token) {
@@ -13,10 +14,12 @@ const token = {
 
 // register
 export const register = registerFormData => async dispatch => {
+  console.log(registerFormData);
   dispatch(actions.registerRequest());
-
+  
   try {
-    const { data } = await axios.post('/users/signup', registerFormData);
+    const { data } = await axios.post('/users/register', registerFormData);
+    
     token.set(data.token);
     dispatch(actions.registerSuccess(data));
   } catch (error) {
@@ -37,7 +40,7 @@ export const login = loginFormData => async dispatch => {
   }
 };
 
-// logout
+// // logout
 export const logout = () => async dispatch => {
   dispatch(actions.logoutRequest());
 
@@ -50,7 +53,7 @@ export const logout = () => async dispatch => {
   }
 };
 
-// getCurrentUser
+// // getCurrentUser
 export const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
