@@ -1,0 +1,8 @@
+@mixin font($fs, $lh) {
+  font-size: $fs;
+  line-height: $lh / $fs;
+}
+// в componentName.scss добавить:
+// @import 'styles/shared';
+// в коде вставлять так:
+// @include font(16px, 30px);
