@@ -24,15 +24,14 @@
   overflow: hidden;
 }
 
-// в коде вставлять так:
-// @import 'styles/shared.scss';
-// .tempStyle {
-//   @extend %list;
+// Как использовать: в ваш componentName.scss добавить следующее:
+//
+// @import 'styles/shared';
+//
+// .yourStyle {
 //   display: flex;
-//   justify-content: center;
-//   //next style etc
-// }
-// .tempItem {
+//   @include font(16px, 30px);
+//   @extend %list; <------- this placeholders
 //   border: 1px solid $color;
 //   background-color: $color;
 // }
