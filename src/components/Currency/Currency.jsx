@@ -12,14 +12,14 @@ const Currency = () => {
   useEffect(() => {
     setLoading(true)
     fetchData()
-      .then(res => {
-        res.data.forEach(item => {
-          if (item.ccy === 'USD') {
-            setUSD({ buy: item.buy, sale: item.sale })
-          } else if (item.ccy === 'EUR') {
-            setEUR({ buy: item.buy, sale: item.sale })
-          } else if (item.ccy === 'RUR') {
-            setRUB({ buy: item.buy, sale: item.sale })
+      .then(({data}) => {
+        data.forEach(({ccy, buy, sale}) => {
+          if (ccy === 'USD') {
+            setUSD({ buy: buy, sale: sale })
+          } else if (ccy === 'EUR') {
+            setEUR({ buy: buy, sale: sale })
+          } else if (ccy === 'RUR') {
+            setRUB({ buy: buy, sale: sale })
           }
         })
       })
@@ -28,7 +28,7 @@ const Currency = () => {
     ,[])
 
   return (
-    <div>
+    <div className={style.tableWrapper}>
       <ul className={style.titleList}>
         <li className={style.title}>Валюта</li>
         <li className={style.title}>Покупка</li>
