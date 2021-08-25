@@ -2,7 +2,15 @@
   font-size: $fs;
   line-height: $lh / $fs;
 }
-// в componentName.scss добавить:
+
+// Как использовать: в ваш componentName.scss добавить следующее:
+//
 // @import 'styles/shared';
-// в коде вставлять так:
-// @include font(16px, 30px);
+//
+// .yourStyle {
+//   display: flex;
+//   @include font(16px, 30px); <------- this mixin
+//   @extend %list;
+//   border: 1px solid $color;
+//   background-color: $color;
+// }
