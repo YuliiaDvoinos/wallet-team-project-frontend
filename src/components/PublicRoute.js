@@ -7,11 +7,11 @@ import { getIsAuthenticated } from '../redux/auth/auth-selectors';
  * - В противном случае рендерит компонент
  */
 export default function PublicRoute({ redirectTo, children, ...routeProps }) {
-  // const isLoggedIn = useSelector(getIsAuthenticated);
+  const isLoggedIn = useSelector(getIsAuthenticated);
 
   return (
     <Route {...routeProps}>
-      {true && routeProps.restricted ? (
+      {isLoggedIn && routeProps.restricted ? (
         <Redirect to={redirectTo} />
       ) : (
         children
