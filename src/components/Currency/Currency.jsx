@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchData } from './fetchData'
-import style from './Currency.scss'
+import './Currency.scss'
 
 const Currency = () => {
 
@@ -28,26 +28,26 @@ const Currency = () => {
     ,[])
 
   return (
-    <div className={style.tableWrapper}>
-      <ul className={style.titleList}>
-        <li className={style.title}>Валюта</li>
-        <li className={style.title}>Покупка</li>
-        <li className={style.title}>Продажа</li>
+    <div className="tableWrapper">
+      <ul className="titleList">
+        <li className="title">Валюта</li>
+        <li className="title">Покупка</li>
+        <li className="title">Продажа</li>
       </ul>
-      <ul>
-        <li className={style.currencyName}>USD</li>
-        <li className={style.price}>{ USD.buy }</li>
-        <li className={style.price}>{ USD.sale}</li>
+      <ul className="priceList">
+        <li className="currencyName">USD</li>
+        <li className="price">{ USD.buy }</li>
+        <li className="price">{ USD.sale}</li>
       </ul>
-      <ul>
-        <li className={style.currencyName}>EUR</li>
-        <li className={style.price}>{ EUR.buy }</li>
-        <li className={style.price}>{ EUR.sale }</li>
+      <ul className="priceList">
+        <li className="currencyName">EUR</li>
+        <li className="price">{ EUR.buy }</li>
+        <li className="price">{ EUR.sale }</li>
       </ul>
-      <ul>
-        <li className={style.currencyName}>RUB</li>
-        <li className={style.price}>{ RUB.buy }</li>
-        <li className={style.price}>{ RUB.sale }</li>
+      <ul className="priceList">
+        <li className="currencyName">RUB</li>
+        <li className="price">{ RUB.buy }</li>
+        <li className="price">{ RUB.sale }</li>
       </ul>
    </div>
   )
