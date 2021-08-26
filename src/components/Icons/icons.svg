@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="addTransaction" viewBox="0 0 20 20">
+      <path d="M10 0V20" stroke="white" stroke-width="2"/>
+      <path d="M0 10L20 10" stroke="white" stroke-width="2"/>
+    </symbol>
+</svg>
