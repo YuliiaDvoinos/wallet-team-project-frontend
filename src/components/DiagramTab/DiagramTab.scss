@@ -1,0 +1,36 @@
+@import 'styles/shared';
+
+@media screen and (min-width: 320px) {
+  .title {
+    @include font(30px, 45px);
+    font-family: $secondary-font;
+    margin-bottom: 10px;
+  }
+  .chartDonut {
+    width: 280px;
+    height: 280px;
+  }
+  .input {
+    @include font(16px, 23px);
+    height: 50px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .chartDonut {
+    width: 320px;
+    height: 320px;
+  }
+  .input {
+    width: 166px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .stats {
+    width: 815px;
+    padding-left: 30px;
+  }
+}
