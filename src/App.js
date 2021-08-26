@@ -7,7 +7,6 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 // import AppBar from './components/AppBar/AppBar';
 import Spinner from './components/Spinner';
-import Carrency from './components/Currency'
 
 const RegisterPage = lazy(() =>
   import('./pages/RegisterPage' /* webpackChunkName: "register-page" */),
@@ -27,9 +26,7 @@ export default function App() {
 
   return (
     <>
-      <Carrency/>
-
-      {/* <AppBar />
+      {/* <AppBar /> */}
       
       <Suspense fallback={<Spinner />}>
         <Switch>
@@ -57,7 +54,7 @@ export default function App() {
             <DashboardPage />
           </PrivateRoute>
         </Switch>
-      </Suspense> */}
+      </Suspense>
     </>
 
   );

@@ -26,29 +26,13 @@ const Currency = () => {
       })
       .catch(err => err)
       .finally(setLoading(false))
-    // setTimeout(() => {
-    //   createArrCurrency()
-    //   .then(data => {
-    //     data.forEach(({ ccy, buy, sale }) => {
-    //       if (ccy === 'USD') {
-    //         setUSD({ buy: buy, sale: sale })
-    //       } else if (ccy === 'EUR') {
-    //         setEUR({ buy: buy, sale: sale })
-    //       } else if (ccy === 'RUR') {
-    //         setRUB({ buy: buy, sale: sale })
-    //       }
-    //     })
-    //   })
-    //   .catch(err => err)
-    //   .finally(setLoading(false))
-    // }, 20000);
   }, [])
   
   return (
 
     
     
-    <div className={`blur-${loading} container`}>
+    <div className={`blur-${loading}`}>
       <div className="currencyWrapper">
         {loading && <Spinner/>}
         <ul className="titleList">
