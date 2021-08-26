@@ -1,6 +1,8 @@
+@use "sass:math";
+
 @mixin font($fs, $lh) {
   font-size: $fs;
-  line-height: $lh / $fs;
+  line-height: math.div($lh, $fs);
 }
 
 // Как использовать: в ваш componentName.scss добавить следующее:
@@ -9,8 +11,7 @@
 //
 // .yourStyle {
 //   display: flex;
-//   @include font(16px, 30px); <------- this mixin
-//   @extend %list;
-//   border: 1px solid $color;
-//   background-color: $color;
+//   @include font(16px, 30px); // mixin
+//   @extend %list; // placeholders
+//   background-color: $color; // variables
 // }
