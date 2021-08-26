@@ -36,6 +36,16 @@
       margin-bottom: 10px;
     }
   }
+
+  .blur-true {
+    position: relative;
+    filter: blur(3px);
+  }
+
+  .blur-false {
+    position: relative;
+    filter: none;
+  }
 }
 
 @media screen and (min-width: 768px) {

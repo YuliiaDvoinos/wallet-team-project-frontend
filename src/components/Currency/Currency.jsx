@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { createArrCurrency } from './funcCreateArrCurrency'
+import { createArrCurrency } from "./funcCreateArrCurrency"
+import Spinner from "../Spinner";
 import './Currency.scss'
 
 const Currency = () => {
@@ -25,11 +26,31 @@ const Currency = () => {
       })
       .catch(err => err)
       .finally(setLoading(false))
-  },[])
+    // setTimeout(() => {
+    //   createArrCurrency()
+    //   .then(data => {
+    //     data.forEach(({ ccy, buy, sale }) => {
+    //       if (ccy === 'USD') {
+    //         setUSD({ buy: buy, sale: sale })
+    //       } else if (ccy === 'EUR') {
+    //         setEUR({ buy: buy, sale: sale })
+    //       } else if (ccy === 'RUR') {
+    //         setRUB({ buy: buy, sale: sale })
+    //       }
+    //     })
+    //   })
+    //   .catch(err => err)
+    //   .finally(setLoading(false))
+    // }, 20000);
+  }, [])
   
   return (
-    <div className="container">
+
+    
+    
+    <div className={`blur-${loading} container`}>
       <div className="currencyWrapper">
+        {loading && <Spinner/>}
         <ul className="titleList">
         <li className="title">Валюта</li>
         <li className="title">Покупка</li>

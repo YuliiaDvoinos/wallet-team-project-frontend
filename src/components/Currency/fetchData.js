@@ -6,5 +6,5 @@ export async function fetchData() {
     return await axios.get(URL)
   } catch(err) {
     return err
-  }
+  } 
 }

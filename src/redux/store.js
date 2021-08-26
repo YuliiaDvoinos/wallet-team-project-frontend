@@ -12,7 +12,6 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/auth-reducer';
 
-
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
@@ -30,7 +29,6 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
