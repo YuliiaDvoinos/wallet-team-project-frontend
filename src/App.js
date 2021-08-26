@@ -56,5 +56,6 @@ export default function App() {
         </Switch>
       </Suspense>
     </>
+
   );
 }
