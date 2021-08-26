@@ -1,42 +1,65 @@
-@import '../../styles/variables';
+@import '../../styles/shared.scss';
 
-// Mobile layout
-.tableWrapper {
-  padding: 12px 20px 22px 20px;
-  width: 280px;
-  height: 174px;
-  color: $modal-color;
-  background-color: $accent-color;
-}
+@media screen and (min-width: 320px) {
+  .titleList {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 20px 12px 20px;
+    color: $modal-color;
+    background-color: $secondary-accent-color;
+    font-style: normal;
+    font-weight: bold;
+    @include font(16px, 27px);
+    border-radius: 30px 30px 0px 0px;
+  }
 
-.titleList {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  height: 38px;
-  background-color: $secondary-accent-color;
-}
-.priceList {
-  list-style: none;
-}
+  .priseListWrapper {
+    @include font(16px, 24px);
+    color: $modal-color;
+    padding: 10px 20px 22px 20px;
+    background-color: $accent-color;
+    background-image: url('./Vector\ 7.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    border-radius: 0px 0px 30px 30px;
+  }
 
-.title {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 27px;
+  .priceList {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
 
-  &:not(:last-child) {
-    margin-right: 20px;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
   }
 }
 
-.currencyName {
+@media screen and (min-width: 768px) {
+  .currencyWrapper {
+    width: 334px;
+  }
 }
 
-.price {
+@media screen and (min-width: 1280px) {
+  .currencyWrapper {
+    width: 347px;
+  }
+
+  .titleList {
+    padding: 16px 30px 17px 30px;
+  }
+
+  .priseListWrapper {
+    padding: 20px 30px 150px 30px;
+  }
+
+  .priceList {
+    &:not(:last-child) {
+      margin-bottom: 23px;
+    }
+  }
 }
-
-// Tablet layout
-
-// Desktop layout

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchData } from './fetchData'
+import { createArrCurrency } from './funcCreateArrCurrency'
 import './Currency.scss'
 
 const Currency = () => {
@@ -11,9 +11,9 @@ const Currency = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetchData()
-      .then(({data}) => {
-        data.forEach(({ccy, buy, sale}) => {
+    createArrCurrency()
+      .then(data => {
+        data.forEach(({ ccy, buy, sale }) => {
           if (ccy === 'USD') {
             setUSD({ buy: buy, sale: sale })
           } else if (ccy === 'EUR') {
@@ -24,31 +24,35 @@ const Currency = () => {
         })
       })
       .catch(err => err)
-      .finally(setLoading(false))}
-    ,[])
-
+      .finally(setLoading(false))
+  },[])
+  
   return (
-    <div className="tableWrapper">
-      <ul className="titleList">
+    <div className="container">
+      <div className="currencyWrapper">
+        <ul className="titleList">
         <li className="title">Валюта</li>
         <li className="title">Покупка</li>
         <li className="title">Продажа</li>
       </ul>
-      <ul className="priceList">
-        <li className="currencyName">USD</li>
-        <li className="price">{ USD.buy }</li>
-        <li className="price">{ USD.sale}</li>
+      <div className="priseListWrapper">
+        <ul className="priceList">
+        <li >USD</li>
+        <li >{ USD.buy }</li>
+        <li >{ USD.sale}</li>
       </ul>
       <ul className="priceList">
-        <li className="currencyName">EUR</li>
-        <li className="price">{ EUR.buy }</li>
-        <li className="price">{ EUR.sale }</li>
+        <li >EUR</li>
+        <li >{ EUR.buy }</li>
+        <li >{ EUR.sale }</li>
       </ul>
       <ul className="priceList">
-        <li className="currencyName">RUB</li>
-        <li className="price">{ RUB.buy }</li>
-        <li className="price">{ RUB.sale }</li>
+        <li >RUB</li>
+        <li >{ RUB.buy }</li>
+        <li >{ RUB.sale }</li>
       </ul>
+      </div>
+      </div>
    </div>
   )
 }

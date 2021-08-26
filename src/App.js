@@ -5,11 +5,10 @@ import Currency from './components/Currency/Currency';
 const App = () => {
   return (
     <div>
-    {/* <Switch>
+    <Switch>
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/login" component={LoginPage} />
-    </Switch> */}
-      <Currency/>
+    </Switch>
 
     </div>
   );
