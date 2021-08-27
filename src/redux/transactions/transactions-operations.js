@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as actions from './transactions-actions';
 
-axios.defaults.baseURL = 'http://localhost:4000/api';
 //get Transactions
 const fetchTransactions = () => async dispatch => {
   dispatch(actions.getTransactionsRequest());
