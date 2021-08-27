@@ -1,11 +1,12 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
+import Logo from '../Logo';
 import './RegisterForm.scss';
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
-  
+
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -14,36 +15,23 @@ export default function RegisterForm() {
 
   const handleChange = useCallback(({ currentTarget: { name, value } }) => {
     setUser(prev => ({ ...prev, [name]: value }));
-    
   }, []);
 
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
-      
+
       dispatch(register(user));
     },
     [dispatch, user],
   );
 
   return (
-    <div className="register">
-      <h1 className="register__title">Register</h1>
-      <form className="registerForm" onSubmit={handleSubmit}>
-        <label>
-          <span className="registerForm__title">Name</span>
-          <input
-            className="registerForm__input"
-            required
-            type="text"
-            name="name"
-            value={user.name}
-            onChange={handleChange}
-          />
-        </label>
-     
-        <label>
-          <span className="registerForm__title">Email</span>
+    <div className="registerForm">
+      <h2 className="visually-hidden">Регистрация</h2>
+      <Logo />
+      <form className="registerForm__form" onSubmit={handleSubmit}>
+        <label className="registerForm__label">
           <input
             className="registerForm__input"
             required
@@ -51,11 +39,11 @@ export default function RegisterForm() {
             name="email"
             value={user.email}
             onChange={handleChange}
+            placeholder="E-mail"
           />
         </label>
-       
-        <label>
-          <span className="registerForm__title">Password</span>
+
+        <label className="registerForm__label">
           <input
             className="registerForm__input"
             required
@@ -63,10 +51,42 @@ export default function RegisterForm() {
             name="password"
             value={user.password}
             onChange={handleChange}
+            placeholder="Пароль"
           />
         </label>
+
+        <label className="registerForm__label">
+          <input
+            className="registerForm__input"
+            required
+            type="password"
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+            placeholder="Подтвердите пароль"
+          />
+        </label>
+
+        <label className="registerForm__label">
+          <input
+            className="registerForm__input"
+            required
+            type="text"
+            name="name"
+            value={user.name}
+            onChange={handleChange}
+            placeholder="Ваше имя"
+          />
+        </label>
+
         <button className="registerForm__button" type="submit">
-          Register
+          Регистрация
+        </button>
+        <button
+          className="registerForm__button registerForm__button--secondary"
+          type="button"
+        >
+          Вход
         </button>
       </form>
     </div>

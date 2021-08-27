@@ -1,0 +1,90 @@
+@import 'styles/shared';
+
+.registerForm {
+  background-color: $background-color;
+  border-radius: 20px;
+
+  &__form {
+    margin-top: 50px;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  &__input {
+    width: 280px;
+    height: 34px;
+    border: none;
+    border-bottom: 1px solid $placeholder-border-color;
+    padding: 0 0 10px 12px;
+
+    &::placeholder {
+      font-weight: 400;
+      @include font(18px, 27px);
+      color: $placeholder-color;
+    }
+  }
+
+  &__button {
+    width: 280px;
+    height: 50px;
+    background: $button-color;
+    border: transparent;
+    border-radius: 20px;
+    font-weight: 400;
+    @include font(18px, 27px);
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $secondary-text-color;
+
+    &--secondary {
+      background: $background-color;
+      border: 1px solid $accent-color;
+      color: $accent-color;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .registerForm {
+    width: 540px;
+    height: 616px;
+    padding: 40px 65px 60px;
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__label {
+      &:nth-last-of-type(1) {
+        margin-bottom: 50px;
+      }
+    }
+
+    &__input {
+      width: 409.5px;
+    }
+
+    &__button {
+      width: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .registerForm {
+    &__button {
+      cursor: pointer;
+    }
+  }
+}

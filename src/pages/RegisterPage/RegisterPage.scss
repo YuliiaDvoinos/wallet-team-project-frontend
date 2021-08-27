@@ -1,0 +1,62 @@
+@import 'styles/shared';
+
+.register {
+  padding: 36px 0;
+
+  &__title {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .register {
+    background: url('../../images/UI/tablet/ellipse-orange-tablet.svg')
+        no-repeat 100% 0,
+      url('../../images/UI/tablet/ellipse-purple-tablet.svg') no-repeat 0 100%;
+    background-color: $body-background-color;
+    padding: 0 0 48px;
+
+    & .container {
+      background: url('../../images/UI/tablet/frame-register-tablet.svg')
+        no-repeat 114px 60px;
+      padding: 167px 114px 0;
+    }
+
+    &__title {
+      display: block;
+      font-family: $secondary-font;
+      font-weight: 400;
+      @include font(30px, 45px);
+      color: $title-color;
+      margin: 0 0 148px 314px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .register {
+    background: url('../../images/UI/desktop/ellipse-orange-desktop.svg')
+        no-repeat 100% 0,
+      url('../../images/UI/desktop/ellipse-purple-desktop.svg') no-repeat 0 100%;
+    background-color: $body-background-color;
+    padding: 0;
+
+    & .container {
+      display: flex;
+      justify-content: space-between;
+      background: url('../../images/UI/desktop/frame-register-desktop.svg')
+        no-repeat 76px 150px;
+      padding: 0;
+    }
+
+    &__title {
+      margin: 597.5px 0 77.5px 200px;
+    }
+
+    &__right {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(50px);
+      padding: 52px 85px 52px 95px;
+    }
+  }
+}

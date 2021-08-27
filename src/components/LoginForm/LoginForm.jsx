@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
+import Logo from '../Logo';
 import './LoginForm.scss';
 
 export default function LoginForm() {
@@ -22,11 +23,11 @@ export default function LoginForm() {
   );
 
   return (
-    <div className="login">
-      <h1 className="login__title">Login</h1>
-      <form className="loginForm" onSubmit={handleSubmit}>
-        <label>
-          <span className="loginForm__title">Email</span>
+    <div className="loginForm">
+      <h2 className="visually-hidden">Авторизация</h2>
+      <Logo />
+      <form className="loginForm__form" onSubmit={handleSubmit}>
+        <label className="loginForm__label">
           <input
             className="loginForm__input"
             required
@@ -34,11 +35,11 @@ export default function LoginForm() {
             name="email"
             value={user.email}
             onChange={handleChange}
+            placeholder="E-mail"
           />
         </label>
 
-        <label>
-          <span className="loginForm__title">Password</span>
+        <label className="loginForm__label">
           <input
             className="loginForm__input"
             required
@@ -46,10 +47,18 @@ export default function LoginForm() {
             name="password"
             value={user.password}
             onChange={handleChange}
+            placeholder="Пароль"
           />
         </label>
+
         <button className="loginForm__button" type="submit">
-          Login
+          Вход
+        </button>
+        <button
+          className="loginForm__button loginForm__button--secondary"
+          type="button"
+        >
+          Регистрация
         </button>
       </form>
     </div>
