@@ -8,10 +8,15 @@
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   background-color: lightcyan; //DELETE!!!!!!!!!!!!!
-  border-left: 5px solid $spend-color;
 
   &:not(:last-child) {
     margin-bottom: 40px;
+  }
+  &_income {
+    border-left: 5px solid $income-color;
+  }
+  &_spend {
+    border-left: 5px solid $spend-color;
   }
 }
 
