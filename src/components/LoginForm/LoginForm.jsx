@@ -1,6 +1,8 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
+import { Link } from 'react-router-dom';
+import routes from '../../routes';
 import Logo from '../Logo';
 import './LoginForm.scss';
 
@@ -54,12 +56,14 @@ export default function LoginForm() {
         <button className="loginForm__button" type="submit">
           Вход
         </button>
-        <button
-          className="loginForm__button loginForm__button--secondary"
-          type="button"
-        >
-          Регистрация
-        </button>
+        <Link to={routes.register} className="link">
+          <button
+            className="loginForm__button loginForm__button--secondary"
+            type="button"
+          >
+            Регистрация
+          </button>
+        </Link>
       </form>
     </div>
   );
