@@ -1,9 +1,3 @@
-import { createSelector } from 'reselect';
+// import { createSelector } from 'reselect';
 
-const getAllTransactions = state => state.transactions.result;
-
-const transactionSelectors = {
-  getAllTransactions,
-};
-
-export default transactionSelectors;
+export const getAllTransactions = state => state.transactions.result;

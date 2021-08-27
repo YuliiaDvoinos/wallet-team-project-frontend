@@ -2,20 +2,22 @@ import { useMedia } from 'react-media';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import operations from '../../redux/transactions/transactions-operations';
-import transactionSelectors from '../../redux/transactions/transactions-selectors';
+import { getAllTransactions } from '../../redux/transactions/transactions-selectors';
 import convertor from './utils';
 import HomeTabLarge from './HomeTabLarge';
 import HomeTabMobile from './HomeTabMobile';
 
 export default function HomeTab() {
   const { fetchTransactions } = operations;
-  const { getAllTransactions } = transactionSelectors;
   const transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setTimeout(() => dispatch(fetchTransactions()));
-  }, [dispatch]);
+  useEffect(
+    () => {
+      setTimeout(() => dispatch(fetchTransactions()));
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dispatch],
+  );
 
   const convertedArr = convertor(transactions);
 

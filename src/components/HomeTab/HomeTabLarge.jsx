@@ -17,18 +17,22 @@ function HomeTabLarge({ transactions }) {
         </tr>
       </thead>
       <tbody className="home-table__body">
-        {transactions.map(({ _id, type, date, money, category, comment }) => (
-          <tr key={_id} className="home-table__row">
-            <td className="home-table__cell">{date}</td>
-            <td className="home-table__cell">{type}</td>
-            <td className="home-table__cell">{category.name}</td>
-            <td className="home-table__cell">{comment}</td>
-            <td className={type === '-' ? ItemSpendClass : ItemIncomeClass}>
-              {money}
-            </td>
-            <td className="home-table__cell">6 9000.00</td>
-          </tr>
-        ))}
+        {transactions.map(
+          ({ _id, type, date, money, category, comment, balance }) => (
+            <tr key={_id} className="home-table__row">
+              <td className="home-table__cell">{date}</td>
+              <td className="home-table__cell">{type}</td>
+              <td className="home-table__cell">{category.name}</td>
+              <td className="home-table__cell">{comment}</td>
+              <td className={type === '-' ? ItemSpendClass : ItemIncomeClass}>
+                {money}
+              </td>
+              <td className="home-table__cell">
+                {type === '-' ? balance - money : balance + money}
+              </td>
+            </tr>
+          ),
+        )}
 
         {/* !!!!!!!!!!!!!STATIC DATA!!!!!!!!!!!! */}
         <tr className="home-table__row">
