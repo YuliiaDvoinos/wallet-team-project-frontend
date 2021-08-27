@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as actions from './auth-actions';
-axios.defaults.baseURL = 'http://localhost:4000/api';
+
+axios.defaults.baseURL = 'https://wallet-tpb.herokuapp.com/api';
 
 const token = {
   set(token) {
