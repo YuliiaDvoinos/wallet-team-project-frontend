@@ -1,25 +1,19 @@
 import './HomeTabMobile.scss';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import operations from '../../redux/transactions/transactions-operations';
-import transactionSelectors from '../../redux/transactions/transactions-selectors';
-// import {}
-const { fetchTransactions } = operations;
-const { getAllTransactions } = transactionSelectors;
 
-function HomeTabMobile() {
-  const transactions = useSelector(getAllTransactions);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    setTimeout(() => dispatch(fetchTransactions()));
-  }, [dispatch]);
+function HomeTabMobile({ transactions }) {
+  const tableSpendClass = 'home-table__card home-table__card_spend';
+  const tableIncomeClass = 'home-table__card home-table__card_income';
+  const itemSpendClass = 'home-table__item_value home-table__item_spend';
+  const itemIncomeClass = 'home-table__item_value home-table__item_income';
 
   return (
-    <ul className="home-table__card">
+    <>
       {transactions.map(({ _id, type, date, money, category, comment }) => (
-        <>
-          <ul key={_id} className="home-table__group list">
+        <ul
+          key={_id}
+          className={type === '-' ? tableSpendClass : tableIncomeClass}
+        >
+          <ul className="home-table__group list">
             <li className="home-table__item">Дата</li>
             <li className="home-table__item_value">{date}</li>
           </ul>
@@ -36,8 +30,8 @@ function HomeTabMobile() {
             <li className="home-table__item_value">{comment}</li>
           </ul>
           <ul className="home-table__group list">
-            <li className="home-table__item">Сума</li>
-            <li className="home-table__item_value home-table__item_spend">
+            <li className="home-table__item">Сумма</li>
+            <li className={type === '-' ? itemSpendClass : itemIncomeClass}>
               {money}
             </li>
           </ul>
@@ -45,9 +39,11 @@ function HomeTabMobile() {
             <li className="home-table__item">Баланс</li>
             <li className="home-table__item_value">6 900.00</li>
           </ul>
-        </>
+        </ul>
       ))}
-      {/* <ul className="home-table__group list">
+
+      {/* !!!STATIC DATA!!!!!!
+      <ul className="home-table__group list">
         <li className="home-table__item">Дата</li>
         <li className="home-table__item_value">10.08.19</li>
       </ul>
@@ -71,7 +67,7 @@ function HomeTabMobile() {
         <li className="home-table__item">Баланс</li>
         <li className="home-table__item_value">6 900.00</li>
       </ul> */}
-    </ul>
+    </>
   );
 }
 

@@ -1,6 +1,9 @@
 import './HomeTabLarge.scss';
 
-function HomeTabLarge() {
+function HomeTabLarge({ transactions }) {
+  const ItemSpendClass = 'home-table__cell home-table__cell_spend';
+  const ItemIncomeClass = 'home-table__cell home-table__cell_income';
+
   return (
     <table className="home-table">
       <thead className="home-table__header">
@@ -14,14 +17,20 @@ function HomeTabLarge() {
         </tr>
       </thead>
       <tbody className="home-table__body">
-        <tr className="home-table__row">
-          <td className="home-table__cell">04.01.19</td>
-          <td className="home-table__cell">-</td>
-          <td className="home-table__cell">Разное</td>
-          <td className="home-table__cell">Подарок жене</td>
-          <td className="home-table__cell home-table__cell_spend">300.00</td>
-          <td className="home-table__cell">6 9000.00</td>
-        </tr>
+        {transactions.map(({ _id, type, date, money, category, comment }) => (
+          <tr key={_id} className="home-table__row">
+            <td className="home-table__cell">{date}</td>
+            <td className="home-table__cell">{type}</td>
+            <td className="home-table__cell">{category.name}</td>
+            <td className="home-table__cell">{comment}</td>
+            <td className={type === '-' ? ItemSpendClass : ItemIncomeClass}>
+              {money}
+            </td>
+            <td className="home-table__cell">6 9000.00</td>
+          </tr>
+        ))}
+
+        {/* !!!!!!!!!!!!!STATIC DATA!!!!!!!!!!!! */}
         <tr className="home-table__row">
           <td className="home-table__cell">05.01.19</td>
           <td className="home-table__cell">+</td>
@@ -47,14 +56,6 @@ function HomeTabLarge() {
           <td className="home-table__cell">Овощи на неделю</td>
           <td className="home-table__cell home-table__cell_spend">280.00</td>
           <td className="home-table__cell">13 870.00</td>
-        </tr>
-        <tr className="home-table__row">
-          <td className="home-table__cell">07.01.19</td>
-          <td className="home-table__cell">+</td>
-          <td className="home-table__cell">Нерегулярный доход</td>
-          <td className="home-table__cell">Подарок на др</td>
-          <td className="home-table__cell home-table__cell_income">1 000.00</td>
-          <td className="home-table__cell">14870.00</td>
         </tr>
       </tbody>
     </table>
