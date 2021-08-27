@@ -27,7 +27,7 @@ export default function App() {
   return (
     <>
       {/* <AppBar /> */}
-      
+
       <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute
@@ -56,6 +56,5 @@ export default function App() {
         </Switch>
       </Suspense>
     </>
-
   );
 }

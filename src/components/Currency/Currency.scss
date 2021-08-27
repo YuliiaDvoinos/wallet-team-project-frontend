@@ -1,4 +1,4 @@
-@import '../../styles/shared.scss';
+@import 'styles/shared.scss';
 
 @media screen and (min-width: 320px) {
   .titleList {
@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 11px 20px 12px 20px;
-    color: $modal-color;
+    color: $secondary-text-color;
     background-color: $secondary-accent-color;
     font-style: normal;
     font-weight: bold;
@@ -17,7 +17,7 @@
 
   .priseListWrapper {
     @include font(16px, 24px);
-    color: $modal-color;
+    color: $secondary-text-color;
     padding: 10px 20px 22px 20px;
     background-color: $accent-color;
     background-image: url('./Vector\ 7.svg');
