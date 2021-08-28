@@ -12,12 +12,9 @@ export default function HomeTab() {
   const transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
 
-  useEffect(
-    () => {
-      setTimeout(() => dispatch(fetchTransactions()));
-    }, // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dispatch],
-  );
+  useEffect(() => {
+    dispatch(fetchTransactions());
+  }, [dispatch, fetchTransactions]);
 
   const convertedArr = convertor(transactions);
 

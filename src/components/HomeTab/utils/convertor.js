@@ -19,18 +19,19 @@ const convertor = array =>
       // if (category.name === 'car') {
       //   newCategory = 'Машина';
       // }
+      const parsedMoney = parseFloat(money);
 
       const obj = {
         _id,
         date: newDate,
         type: convertedType,
-        money,
+        money: parsedMoney,
         category,
         comment,
         balance: prevBalance,
       };
       return obj;
     })
-    .reverse();
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
 
 export default convertor;
