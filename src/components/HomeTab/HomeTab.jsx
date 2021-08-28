@@ -7,12 +7,17 @@ import convertor from './utils';
 import HomeTabLarge from './HomeTabLarge';
 import HomeTabMobile from './HomeTabMobile';
 import ButtonAddTransaction from '../ButtonAddTransaction';
+import ModalAddTransaction from '../ModalAddTransaction';
+import './DashboardPage.scss';
 
 export default function HomeTab() {
   const { fetchTransactions } = operations;
   const { getAllTransactions } = transactionSelectors;
   const transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
+  const isModalAddTransactionOpen = useSelector(
+transactionSelectors.getIsModalAddTransactionOpen,
+);
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -35,6 +40,7 @@ export default function HomeTab() {
       )}
 
       <ButtonAddTransaction />
+{isModalAddTransactionOpen && <ModalAddTransaction />}
     </>
   );
 }
