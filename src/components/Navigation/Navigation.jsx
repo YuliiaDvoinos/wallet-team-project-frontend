@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { SvgGenerator } from '../SvgGenerator/SvgGenerator';
+import Icons from '../Icons';
 import routes from '../../routes';
 import './Navigation.scss';
 
@@ -14,7 +14,7 @@ export default function Navigation() {
             activeClassName="active-link"
           >
             <span className="nav-icon">
-              <SvgGenerator id="home" />
+              <Icons id="home" className="nav-icon-svg" />
             </span>
             <p>Главная</p>
           </NavLink>
@@ -26,7 +26,7 @@ export default function Navigation() {
             activeClassName="active-link"
           >
             <span className="nav-icon">
-              <SvgGenerator id="diagram" />
+              <Icons id="diagram" className="nav-icon-svg" />
             </span>
             <p>Статистика</p>
           </NavLink>
@@ -38,7 +38,7 @@ export default function Navigation() {
             activeClassName="active-link"
           >
             <span className="nav-icon">
-              <SvgGenerator id="currency" />
+              <Icons id="currency" className="nav-icon-svg" />
             </span>
           </NavLink>
         </li>
