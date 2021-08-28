@@ -1,36 +1,38 @@
 @import 'styles/shared';
 
 @media screen and (min-width: 320px) {
-  .title {
+  .statistics__title {
     @include font(30px, 45px);
     font-family: $secondary-font;
-    margin-bottom: 10px;
-  }
-  .chartDonut {
-    width: 280px;
-    height: 280px;
-  }
-  .input {
-    @include font(16px, 23px);
-    height: 50px;
-    margin-bottom: 20px;
-    border-radius: 30px;
+    font-weight: normal;
+    margin-top: 43px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .chartDonut {
-    width: 320px;
-    height: 320px;
+  .statistics__title {
+    margin-top: 40px;
   }
-  .input {
-    width: 166px;
+  .statistics__data-container {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .stats {
-    width: 815px;
-    padding-left: 30px;
+  .statistics {
+    display: flex;
+    justify-content: space-between;
+
+    &__container {
+      width: 815px;
+      padding-left: 30px;
+      border-left: 1px solid #e7e5f2;
+      // box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      //   1px 0px 0px rgba(255, 255, 255, 0.6);
+    }
+    .statistics__title {
+      margin-top: 30px;
+    }
   }
 }
