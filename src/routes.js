@@ -2,7 +2,6 @@ const routes = {
   dashboard: '/',
   register: '/register',
   login: '/login',
-  home: '/home',
-  diagram: '/diagram',
+  statistics: '/statistics',
 };
 export default routes;

@@ -6,6 +6,7 @@ import transactionSelectors from '../../redux/transactions/transactions-selector
 import convertor from './utils';
 import HomeTabLarge from './HomeTabLarge';
 import HomeTabMobile from './HomeTabMobile';
+import ButtonAddTransaction from '../ButtonAddTransaction';
 
 export default function HomeTab() {
   const { fetchTransactions } = operations;
@@ -14,8 +15,8 @@ export default function HomeTab() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => dispatch(fetchTransactions()));
-  }, [dispatch]);
+    dispatch(fetchTransactions());
+  }, [dispatch, fetchTransactions]);
 
   const convertedArr = convertor(transactions);
 
@@ -26,12 +27,14 @@ export default function HomeTab() {
   const matches = useMedia({ queries: GLOBAL_MEDIA_QUERIES });
 
   return (
-    <div>
+    <>
       {matches.small ? (
         <HomeTabMobile transactions={convertedArr} />
       ) : (
         <HomeTabLarge transactions={convertedArr} />
       )}
-    </div>
+
+      <ButtonAddTransaction />
+    </>
   );
 }
