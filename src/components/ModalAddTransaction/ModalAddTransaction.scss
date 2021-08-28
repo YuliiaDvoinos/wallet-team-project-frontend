@@ -142,8 +142,9 @@
     width: 190px;
     height: 34px;
     padding-left: 20px;
-    @include font(18px, 26px);
-    font-weight: 600;
+    font-weight: 400;
+    @include font(18px, 27px);
+    color: $text-color;
   }
 
   &__icon {
@@ -180,8 +181,8 @@
   }
 
   &__span {
-    @include font(16px, 24px);
     font-weight: 700;
+    @include font(16px, 24px);
     color: $placeholder-border-color;
   }
 
