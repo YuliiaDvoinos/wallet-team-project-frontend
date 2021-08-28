@@ -1,10 +1,10 @@
-import { ReactComponent as WalletLogo } from '../Logo/wallet-logo.svg';
+import Icons from '../Icons/';
 import './Logo.scss';
 
 export default function Logo() {
   return (
     <div className="logo">
-      <WalletLogo className="logo__icon" width="40" height="40" />
+      <Icons id="logo-icon" className="logo__icon" />
       <span className="logo__text">Wallet</span>
     </div>
   );

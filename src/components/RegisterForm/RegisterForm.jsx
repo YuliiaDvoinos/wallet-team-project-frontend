@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
 import { Link } from 'react-router-dom';
+import Icons  from '../Icons/';
 import routes from '../../routes';
 import Logo from '../Logo';
 import './RegisterForm.scss';
@@ -31,9 +32,11 @@ export default function RegisterForm() {
   return (
     <div className="registerForm">
       <h2 className="visually-hidden">Регистрация</h2>
+      
       <Logo />
       <form className="registerForm__form" onSubmit={handleSubmit}>
         <label className="registerForm__label">
+        <Icons id="email-icon"/>
           <input
             className="registerForm__input"
             required
@@ -46,6 +49,7 @@ export default function RegisterForm() {
         </label>
 
         <label className="registerForm__label">
+        <Icons id="pass-icon"/>
           <input
             className="registerForm__input"
             required
@@ -58,6 +62,7 @@ export default function RegisterForm() {
         </label>
 
         <label className="registerForm__label">
+        <Icons id="pass-icon"/>
           <input
             className="registerForm__input"
             required
@@ -70,6 +75,7 @@ export default function RegisterForm() {
         </label>
 
         <label className="registerForm__label">
+        <Icons id="name-icon"/>
           <input
             className="registerForm__input"
             required

@@ -1,5 +1,16 @@
 @import 'styles/shared';
 
+.email-icon,
+.pass-icon,
+.name-icon {
+  width: 24px;
+  height: 24px;
+  fill: $placeholder-color;
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
 .registerForm {
   background-color: $background-color;
   border-radius: 20px;
@@ -11,6 +22,7 @@
   &__label {
     display: block;
     margin-bottom: 40px;
+    position: relative;
   }
 
   &__input {
@@ -18,7 +30,7 @@
     height: 34px;
     border: none;
     border-bottom: 1px solid $placeholder-border-color;
-    padding: 0 0 10px 12px;
+    padding: 0 0 10px 54.5px;
 
     &::placeholder {
       font-weight: 400;

@@ -7,6 +7,8 @@
     justify-content: center;
 
     &__icon {
+      width: 30px;
+      height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -20,6 +22,18 @@
       font-weight: 700;
       @include font(30px, 45px);
       color: $title-color;
+      margin-left: 15.5px;
+      height: 30px;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .logo {
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+    &__text {
       margin-left: 20px;
       height: 40px;
     }
