@@ -5,7 +5,6 @@ import HomeTab from '../../components/HomeTab';
 import './DashboardPage.scss';
 
 export default function DashboardPage() {
-  
   return (
     <>
       <Header />
@@ -16,7 +15,6 @@ export default function DashboardPage() {
           <HomeTab />
         </div>
       </main>
-     
     </>
   );
 }
