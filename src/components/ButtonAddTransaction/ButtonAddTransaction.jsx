@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { isModalAddTransactionOpen } from '../../redux/transactions/transactions-actions';
+import { openModalTransaction } from '../../redux/transactions/transactions-actions';
 import Icons from '../Icons';
 import './ButtonAddTransaction.scss';
 
@@ -9,10 +9,10 @@ export default function ButtonAddTransaction() {
   return (
     <button
       type="button"
-      className="button add-transaction"
-      onClick={e => dispatch(isModalAddTransactionOpen())}
+      className="add-transaction__button"
+      onClick={() => dispatch(openModalTransaction())}
     >
-      <Icons className="add-transaction-button" id="addTransaction" />
+      <Icons className="add-transaction__icon" id="addTransaction" />
     </button>
   );
 }
