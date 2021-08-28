@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import { isModalAddTransactionOpen } from './transactions-actions';
+import {
+  openModalTransaction,
+  closeModalTransaction,
+} from './transactions-actions';
 
 const modalTransaction = createReducer(false, {
-  [isModalAddTransactionOpen]: () => true,
+  [openModalTransaction]: () => true,
+  [closeModalTransaction]: () => false,
 });
 
 export default combineReducers({

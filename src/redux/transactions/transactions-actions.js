@@ -1,5 +1,9 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const isModalAddTransactionOpen = createAction(
-  'transactions/isModalAddTransactionOpen',
+export const openModalTransaction = createAction(
+  'transactions/openModalTransaction',
+);
+
+export const closeModalTransaction = createAction(
+  'transactions/closeModalTransaction',
 );
