@@ -1,0 +1,6 @@
+@import 'styles/shared';
+
+.dashboard {
+  background: $body-background-color;
+  backdrop-filter: blur(50px);
+}
