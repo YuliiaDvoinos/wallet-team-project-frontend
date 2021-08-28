@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsername } from '../../../redux/auth/auth-selectors';
 import { logout } from '../../../redux/auth/auth-operations';
-import { ReactComponent as ExitIcon } from '../UserMenu/exit-icon.svg';
+import Icons  from '../../Icons';
 import './UserMenu.scss';
 
 export default function UserMenu() {
@@ -17,9 +17,10 @@ export default function UserMenu() {
     <div className="userMenu">
       <span className="userMenu__name">{username}</span>
       <button type="button" className="userMenu__button" aria-label="кнопка выхода" onClick={onLogout}>
-        <ExitIcon className="userMenu__button-icon" aria-label="векторная иконка двери"/>
+        <Icons id="exit-icon" aria-label="векторная иконка двери"/>
         <span className="userMenu__button-text">Выйти</span>
       </button>
     </div>
   );
 }
+

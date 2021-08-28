@@ -1,8 +1,9 @@
-import IconsSVG from './icons.svg';
+import IconsSVG from './sprite.svg';
 
 export default function Icons({ id, className }) {
+  const classNames = className ? className: id;
   return (
-    <svg className={`${className}`}>
+    <svg className= {`${classNames} icons`}>
       <use xlinkHref={`${IconsSVG}#${id}`} />
     </svg>
   );

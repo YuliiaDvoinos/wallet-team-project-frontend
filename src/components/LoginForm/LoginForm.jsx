@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
 import { Link } from 'react-router-dom';
+import Icons  from '../Icons/';
 import routes from '../../routes';
 import Logo from '../Logo';
 import './LoginForm.scss';
@@ -30,6 +31,7 @@ export default function LoginForm() {
       <Logo />
       <form className="loginForm__form" onSubmit={handleSubmit}>
         <label className="loginForm__label">
+          <Icons id="email-icon"/>
           <input
             className="loginForm__input"
             required
@@ -42,6 +44,7 @@ export default function LoginForm() {
         </label>
 
         <label className="loginForm__label">
+        <Icons id="pass-icon"/>
           <input
             className="loginForm__input"
             required

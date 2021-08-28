@@ -1,5 +1,11 @@
 @import 'styles/shared';
 
+
+.exit-icon {
+  width: 18px;
+  height: 18px;
+  fill: $placeholder-color;
+}
 @media screen and (min-width: 320px) {
   .userMenu {
     display: flex;
