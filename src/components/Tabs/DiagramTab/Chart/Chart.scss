@@ -4,7 +4,7 @@
   .chart {
     width: 280px;
     height: 280px;
-    margin: 10px auto 0 auto;
+    // margin: 10px auto 0 auto;
 
     &__contents {
       width: 100%;
@@ -30,7 +30,7 @@
     width: 320px;
     height: 320px;
 
-    margin: 20px 0 0 0;
+    // margin: 20px 0 0 0;
 
     &__ballance {
       @include font(18px, 27px);

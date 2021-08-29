@@ -5,17 +5,21 @@
     @include font(30px, 45px);
     font-family: $secondary-font;
     font-weight: normal;
-    margin-top: 43px;
+    // margin-top: 43px;
+  }
+  .statistics__data-container {
+    margin-top: 10px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .statistics__title {
-    margin-top: 40px;
-  }
+  // .statistics__title {
+  //   margin-top: 40px;
+  // }
   .statistics__data-container {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
   }
 }
 
@@ -23,6 +27,7 @@
   .statistics {
     display: flex;
     justify-content: space-between;
+    width: 815px;
 
     &__container {
       width: 815px;
@@ -31,8 +36,8 @@
       // box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       //   1px 0px 0px rgba(255, 255, 255, 0.6);
     }
-    .statistics__title {
-      margin-top: 30px;
-    }
+    // .statistics__title {
+    //   margin-top: 30px;
+    // }
   }
 }
