@@ -6,17 +6,12 @@ import transactionSelectors from '../../redux/transactions/transactions-selector
 import convertor from './utils';
 import HomeTabLarge from './HomeTabLarge';
 import HomeTabMobile from './HomeTabMobile';
-import ButtonAddTransaction from '../ButtonAddTransaction';
-import ModalAddTransaction from '../ModalAddTransaction';
 
 export default function HomeTab() {
   const { fetchTransactions } = operations;
   const { getAllTransactions } = transactionSelectors;
   const transactions = useSelector(getAllTransactions);
   const dispatch = useDispatch();
-  const isModalAddTransactionOpen = useSelector(
-    transactionSelectors.getIsModalAddTransactionOpen,
-  );
 
   useEffect(() => {
     dispatch(fetchTransactions());
@@ -37,9 +32,6 @@ export default function HomeTab() {
       ) : (
         <HomeTabLarge transactions={convertedArr} />
       )}
-
-      <ButtonAddTransaction />
-      {isModalAddTransactionOpen && <ModalAddTransaction />}
     </>
   );
 }
