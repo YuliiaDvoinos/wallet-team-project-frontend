@@ -63,10 +63,18 @@
       transition: font-weight 0.2s;
     }
 
+    &__link--text:hover {
+      color: $secondary-accent-color;
+    }
+
     &__link--active .nav__link--text {
       font-family: $secondary-font;
       font-weight: 700;
       @include font(18px, 27px);
+    }
+
+    &__link--active .nav__link--text:hover {
+      color: $text-color;
     }
   }
 }
