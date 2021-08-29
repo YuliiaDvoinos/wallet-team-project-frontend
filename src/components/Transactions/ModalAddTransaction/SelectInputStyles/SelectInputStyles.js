@@ -60,7 +60,6 @@ const customStyles = {
     ...provided,
     borderBottom: '1px solid #BDBDBD',
     cursor: 'pointer',
-    marginBottom: 40,
     '&:hover': {
       borderColor: '#4a56e2',
     },

@@ -1,21 +1,39 @@
 @import 'styles/shared';
 
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.25);
+@media screen and (min-width: 320px) {
+  .modal-backdrop {
+    position: relative;
+  }
+
+  .modal {
+    max-height: 691px;
+    max-width: 540px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 20px 10px 43px 10px;
+    background-color: $modal-color;
+  }
 }
 
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  padding: 40px 65px 60px 65px;
-  background-color: $modal-color;
-  border-radius: 20px;
+@media screen and (min-width: 768px) {
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .modal {
+    max-height: 617px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px 65px 60px 65px;
+    border-radius: 20px;
+  }
 }
