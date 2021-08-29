@@ -12,7 +12,7 @@ export default function DashboardPage() {
           <Sidebar />
           <main>
             <HomeTab />
-            {/* <DiagramTab /> */}
+            <DiagramTab />
           </main>
         </div>
       </div>
