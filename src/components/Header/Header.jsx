@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="container">
-        <Link to={routes.dashboard} className="link">
+        <Link to={routes.home} className="link">
           <Logo />
         </Link>
 

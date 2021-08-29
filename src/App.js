@@ -34,7 +34,15 @@ export default function App() {
           <LoginPage />
         </PublicRoute>
 
+        <PrivateRoute exact path={routes.dashboard} redirectTo={routes.login}>
+          <DashboardPage />
+        </PrivateRoute>
+
         <PrivateRoute exact path={routes.home} redirectTo={routes.login}>
+          <DashboardPage />
+        </PrivateRoute>
+
+        <PrivateRoute exact path={routes.statistics} redirectTo={routes.login}>
           <DashboardPage />
         </PrivateRoute>
       </Switch>

@@ -1,3 +1,5 @@
+import { Route, Switch } from 'react-router-dom';
+import routes from '../../routes';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import { HomeTab, DiagramTab } from '../../components/Tabs';
@@ -11,8 +13,10 @@ export default function DashboardPage() {
         <div className="container">
           <Sidebar />
           <main>
-            <HomeTab />
-            {/* <DiagramTab /> */}
+            <Switch>
+              <Route path={routes.home} component={HomeTab} />
+              <Route path={routes.statistics} component={DiagramTab} />
+            </Switch>
           </main>
         </div>
       </div>

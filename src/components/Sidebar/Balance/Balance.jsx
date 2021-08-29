@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { getUserBalance } from '../../../redux/auth/auth-selectors';
 import './Balance.scss';
 
-function Balance() {
+export default function Balance() {
   const userBalance = useSelector(getUserBalance);
 
   return (
@@ -14,5 +14,3 @@ function Balance() {
     </div>
   );
 }
-
-export default Balance;
