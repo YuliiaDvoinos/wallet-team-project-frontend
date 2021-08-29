@@ -7,8 +7,6 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import Spinner from './components/Spinner';
 
-import Navigation from './components/Navigation';
-
 const RegisterPage = lazy(() =>
   import('./pages/RegisterPage' /* webpackChunkName: "register-page" */),
 );
@@ -26,29 +24,28 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <Navigation />
-    // <Suspense fallback={<Spinner />}>
-    //   <Switch>
-    //     <PublicRoute
-    //       restricted
-    //       path={routes.register}
-    //       redirectTo={routes.dashboard}
-    //     >
-    //       <RegisterPage />
-    //     </PublicRoute>
+    <Suspense fallback={<Spinner />}>
+      <Switch>
+        <PublicRoute
+          restricted
+          path={routes.register}
+          redirectTo={routes.dashboard}
+        >
+          <RegisterPage />
+        </PublicRoute>
 
-    //     <PublicRoute
-    //       restricted
-    //       path={routes.login}
-    //       redirectTo={routes.dashboard}
-    //     >
-    //       <LoginPage />
-    //     </PublicRoute>
+        <PublicRoute
+          restricted
+          path={routes.login}
+          redirectTo={routes.dashboard}
+        >
+          <LoginPage />
+        </PublicRoute>
 
-    //     <PrivateRoute exact path={routes.dashboard} redirectTo={routes.login}>
-    //       <DashboardPage />
-    //     </PrivateRoute>
-    //   </Switch>
-    // </Suspense>
+        <PrivateRoute exact path={routes.dashboard} redirectTo={routes.login}>
+          <DashboardPage />
+        </PrivateRoute>
+      </Switch>
+    </Suspense>
   );
 }
