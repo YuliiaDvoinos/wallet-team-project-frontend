@@ -3,12 +3,17 @@
 .dashboard {
   background: $body-background-color;
   backdrop-filter: blur(50px);
+  padding: 13px 0 35px;
 }
 
 @media screen and (min-width: 768px) {
-  //
+  .dashboard {
+    padding-top: 20px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-  //
+  .dashboard {
+    padding-top: 40px;
+  }
 }
