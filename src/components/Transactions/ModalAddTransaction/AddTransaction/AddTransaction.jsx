@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import Datetime from 'react-datetime';
 import moment from 'moment';
-// import { closeModalTransaction } from '../../../../redux/transactions/transactions-actions';
+import { closeModalTransaction } from '../../../../redux/transactions/transactions-actions';
 import Select from 'react-select';
 import Switch from 'react-switch';
 import Icons from '../../../Icons';
@@ -11,13 +11,18 @@ import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/ru';
 import './AddTransaction.scss';
 
-export default function AddTransaction(closeModalTransaction) {
+export default function AddTransaction() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [checked, setChecked] = useState(true);
   const [boxShadow, setBoxShadowHandle] = useState(
     '0px 6px 15px rgba(255, 101, 150, 0.5)',
   );
   // const [checked, setChecked] = useState(true);
+
+  const dispatch = useDispatch();
+  const closeTransaction = useCallback(() => {
+    return dispatch(closeModalTransaction());
+  }, [dispatch]);
 
   const handleChange = nextChecked => {
     setChecked(nextChecked);
@@ -131,7 +136,7 @@ export default function AddTransaction(closeModalTransaction) {
         <button
           type="button"
           className="transaction__button transaction__button--cancel"
-          onClick={closeModalTransaction}
+          onClick={closeTransaction}
         >
           Отмена
         </button>
