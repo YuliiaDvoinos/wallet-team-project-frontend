@@ -6,11 +6,11 @@ export default function Balance() {
   const userBalance = useSelector(getUserBalance);
 
   return (
-    <div className="balance__container">
+    <div className="balance">
       <p className="balance__title">Ваш баланс</p>
-      <p className="balance__value">
-        <span className="balance__value_currency">₴</span> {userBalance}
-      </p>
+      <div className="balance__value">
+        <span className="balance__currency">&#8372;</span> {userBalance}
+      </div>
     </div>
   );
 }

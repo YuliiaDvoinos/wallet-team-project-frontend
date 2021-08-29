@@ -4,11 +4,11 @@ import './Modal.scss';
 
 const modalRoot = document.getElementById('modal-root');
 
-export default function Modal({ children, closeModal }) {
+export default function Modal({ children, closeTransaction }) {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        closeModal();
+        closeTransaction();
       }
     };
 
@@ -17,15 +17,15 @@ export default function Modal({ children, closeModal }) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [closeModal]);
+  }, [closeTransaction]);
 
   const handleBackdropClick = useCallback(
     e => {
       if (e.currentTarget === e.target) {
-        closeModal();
+        closeTransaction();
       }
     },
-    [closeModal],
+    [closeTransaction],
   );
 
   return createPortal(

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Datetime from 'react-datetime';
 import moment from 'moment';
-import { closeModalTransaction } from '../../../../redux/transactions/transactions-actions';
+// import { closeModalTransaction } from '../../../../redux/transactions/transactions-actions';
 import Select from 'react-select';
 import Switch from 'react-switch';
 import Icons from '../../../Icons';
@@ -10,39 +10,21 @@ import customStyles from '../SelectInputStyles';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/ru';
 import './AddTransaction.scss';
-
 import operations from '../../../../redux/categories/categories-operations';
 import categoriesSelectors from '../../../../redux/categories/categories-selectors';
 
-export default function AddTransaction() {
+export default function AddTransaction(closeModalTransaction) {
+
   const [selectedOption, setSelectedOption] = useState(null);
   const [checked, setChecked] = useState(true);
   const [boxShadow, setBoxShadowHandle] = useState(
     '0px 6px 15px rgba(255, 101, 150, 0.5)',
   );
-
-  const dispatch = useDispatch();
-  const closeTransaction = useCallback(() => {
-    return dispatch(closeModalTransaction());
-  }, [dispatch]);
+  // const [checked, setChecked] = useState(true);
 
   const handleChange = nextChecked => {
     setChecked(nextChecked);
   };
-
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.code === 'Escape') {
-        closeTransaction();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [closeTransaction]);
 
   useEffect(() => {
     if (checked) {
@@ -206,7 +188,7 @@ export default function AddTransaction() {
         <button
           type="button"
           className="transaction__button transaction__button--cancel"
-          onClick={closeTransaction}
+          onClick={closeModalTransaction}
         >
           Отмена
         </button>
