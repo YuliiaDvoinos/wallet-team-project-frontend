@@ -1,19 +1,45 @@
 @import 'styles/shared';
 
 .dashboard {
-  background: $body-background-color;
-  backdrop-filter: blur(50px);
-  padding: 13px 0 35px;
+  background-color: $body-background-color;
+
+  &__wrapper {
+    padding: 13px 0 35px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .dashboard {
-    padding-top: 20px;
+    background: url('../../images/UI/tablet/ellipse-orange-tablet.svg')
+        no-repeat 100% 0,
+      url('../../images/UI/tablet/ellipse-purple-tablet.svg') no-repeat 0 100%;
+    background-color: $body-background-color;
+
+    &__wrapper {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(50px);
+      padding-top: 20px;
+    }
+
+    & .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
   }
 }
 
 @media screen and (min-width: 1280px) {
   .dashboard {
-    padding-top: 40px;
+    background: url('../../images/UI/desktop/ellipse-orange-desktop.svg')
+        no-repeat 100% 0,
+      url('../../images/UI/desktop/ellipse-purple-desktop.svg') no-repeat 0 100%;
+    background-color: $body-background-color;
+
+    &__wrapper {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(50px);
+      padding-top: 40px;
+    }
   }
 }

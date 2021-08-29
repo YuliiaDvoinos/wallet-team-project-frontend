@@ -10,14 +10,16 @@ export default function DashboardPage() {
     <>
       <Header />
       <div className="dashboard">
-        <div className="container">
-          <Sidebar />
-          <main>
-            <Switch>
-              <Route path={routes.home} component={HomeTab} />
-              <Route path={routes.statistics} component={DiagramTab} />
-            </Switch>
-          </main>
+        <div className="dashboard__wrapper">
+          <div className="container">
+            <Sidebar />
+            <main>
+              <Switch>
+                <Route path={routes.home} component={HomeTab} />
+                <Route path={routes.statistics} component={DiagramTab} />
+              </Switch>
+            </main>
+          </div>
         </div>
       </div>
     </>
