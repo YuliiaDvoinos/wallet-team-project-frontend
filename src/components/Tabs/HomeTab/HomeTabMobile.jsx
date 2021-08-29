@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import transactionSelectors from '../../../redux/transactions/transactions-selectors';
-import { ButtonAddTransaction, AddTransaction } from '../../Transactions';
+import { ButtonAddTransaction, ModalAddTransaction } from '../../Transactions';
 import './HomeTabMobile.scss';
 
 function HomeTabMobile({ transactions }) {
@@ -16,7 +16,7 @@ function HomeTabMobile({ transactions }) {
   return (
     <>
       {!isModalAddTransactionOpen && <ButtonAddTransaction />}
-      {isModalAddTransactionOpen && <AddTransaction />}
+      {isModalAddTransactionOpen && <ModalAddTransaction />}
       {transactions.map(
         ({ _id, type, date, money, category, comment, balance }) => (
           <ul

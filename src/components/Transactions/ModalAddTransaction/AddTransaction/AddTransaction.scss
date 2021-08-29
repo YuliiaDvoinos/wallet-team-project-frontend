@@ -118,7 +118,7 @@
       fill: $accent-color;
       position: absolute;
       right: 20px;
-      top: 4px;
+      top: 78px;
       pointer-events: none;
     }
   }
@@ -126,6 +126,7 @@
   .select {
     &__wrapper {
       position: relative;
+      margin-bottom: 40px;
     }
 
     &__icon {
@@ -134,6 +135,8 @@
       top: 15px;
       width: 18px;
       height: 9px;
+      cursor: pointer;
+      pointer-events: none;
     }
   }
 
@@ -190,6 +193,7 @@
 
     &__sum {
       margin-right: 30px;
+      margin-bottom: 0;
     }
   }
 
@@ -207,6 +211,16 @@
   .date {
     &__input {
       width: 190px;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+      fill: $accent-color;
+      position: absolute;
+      right: 20px;
+      top: 4px;
+      pointer-events: none;
     }
   }
 }
