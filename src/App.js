@@ -28,23 +28,15 @@ export default function App() {
   return (
     <Suspense fallback={<Spinner />}>
       <Switch>
-        <PublicRoute
-          restricted
-          path={routes.register}
-          redirectTo={routes.dashboard}
-        >
+        <PublicRoute restricted path={routes.register} redirectTo={routes.home}>
           <RegisterPage />
         </PublicRoute>
 
-        <PublicRoute
-          restricted
-          path={routes.login}
-          redirectTo={routes.dashboard}
-        >
+        <PublicRoute restricted path={routes.login} redirectTo={routes.home}>
           <LoginPage />
         </PublicRoute>
 
-        <PrivateRoute exact path={routes.dashboard} redirectTo={routes.login}>
+        <PrivateRoute exact path={routes.home} redirectTo={routes.login}>
           <DashboardPage />
         </PrivateRoute>
 
