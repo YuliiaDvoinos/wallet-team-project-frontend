@@ -40,6 +40,7 @@ export default function LoginForm() {
             value={user.email}
             onChange={handleChange}
             placeholder="E-mail"
+            autoComplete="true"
           />
         </label>
 
@@ -53,6 +54,7 @@ export default function LoginForm() {
             value={user.password}
             onChange={handleChange}
             placeholder="Пароль"
+            autoComplete="true"
           />
         </label>
 
