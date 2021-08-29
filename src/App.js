@@ -16,9 +16,7 @@ const LoginPage = lazy(() =>
 const DashboardPage = lazy(() =>
   import('./pages/DashboardPage' /* webpackChunkName: "dashboard-page" */),
 );
-const DiagramTab = lazy(() =>
-  import('./components/DiagramTab' /* webpackChunkName: "statistaics-page" */),
-);
+
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,10 +36,6 @@ export default function App() {
 
         <PrivateRoute exact path={routes.home} redirectTo={routes.login}>
           <DashboardPage />
-        </PrivateRoute>
-
-        <PrivateRoute exact path={routes.statistics} redirectTo={routes.login}>
-          <DiagramTab />
         </PrivateRoute>
       </Switch>
     </Suspense>
