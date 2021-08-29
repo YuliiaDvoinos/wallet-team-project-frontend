@@ -5,7 +5,7 @@ import './DiagramTab.scss';
 export default function DiagramTab() {
   const markup = (
     <>
-      <div className="statistics">
+      <section className="statistics">
         <div className="statistics__container">
           <h1 className="statistics__title">Статистика</h1>
           <div className="statistics__data-container">
@@ -13,7 +13,7 @@ export default function DiagramTab() {
             <Table />
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
   return markup;
