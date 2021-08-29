@@ -10,10 +10,6 @@ const fetchTransactions = () => async dispatch => {
     dispatch(actions.getTransactionsSuccess(data.data.result));
   } catch (error) {
     dispatch(actions.getTransactionsError());
-    alert({
-      text: "You don't have transactions",
-      type: 'error',
-    });
   }
 };
 
