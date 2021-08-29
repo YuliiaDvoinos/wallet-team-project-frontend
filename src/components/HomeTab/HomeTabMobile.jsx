@@ -1,6 +1,14 @@
+import { useSelector } from 'react-redux';
+import transactionSelectors from '../../redux/transactions/transactions-selectors';
+import AddTransaction from '../ModalAddTransaction/AddTransaction';
+import ButtonAddTransaction from '../ButtonAddTransaction';
 import './HomeTabMobile.scss';
 
 function HomeTabMobile({ transactions }) {
+  const isModalAddTransactionOpen = useSelector(
+    transactionSelectors.getIsModalAddTransactionOpen,
+  );
+
   const tableSpendClass = 'home-table__card home-table__card_spend';
   const tableIncomeClass = 'home-table__card home-table__card_income';
   const itemSpendClass = 'home-table__item_value home-table__item_spend';
@@ -8,6 +16,8 @@ function HomeTabMobile({ transactions }) {
 
   return (
     <>
+      {!isModalAddTransactionOpen && <ButtonAddTransaction />}
+      {isModalAddTransactionOpen && <AddTransaction />}
       {transactions.map(({ _id, type, date, money, category, comment }) => (
         <ul
           key={_id}

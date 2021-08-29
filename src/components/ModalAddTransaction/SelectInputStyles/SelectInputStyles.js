@@ -12,6 +12,7 @@ const customStyles = {
   }),
   menu: provided => ({
     ...provided,
+    boxShadow: 'none',
     filter:
       'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     borderRadius: 20,
@@ -19,13 +20,25 @@ const customStyles = {
   }),
   menuList: provided => ({
     ...provided,
+    '@media screen and (min-width: 320px)': {
+      maxHeight: 352,
+    },
+    '@media screen and (min-width: 768px)': {
+      maxHeight: 411,
+    },
+    padding: 0,
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
     backdropFilter: 'blur(50px)',
     borderRadius: 20,
   }),
   control: () => ({
-    width: 408,
+    '@media screen and (min-width: 320px)': {
+      width: 280,
+    },
+    '@media screen and (min-width: 768px)': {
+      width: 408,
+    },
     height: 34,
   }),
   placeholder: provided => ({
@@ -48,6 +61,12 @@ const customStyles = {
     borderBottom: '1px solid #BDBDBD',
     cursor: 'pointer',
     marginBottom: 40,
+    '&:hover': {
+      borderColor: '#4a56e2',
+    },
+    '&:focus': {
+      borderColor: '#4a56e2',
+    },
   }),
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
