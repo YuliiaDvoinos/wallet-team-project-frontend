@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import Icons from '../Icons';
-import routes from '../../routes';
 import Media from 'react-media';
+import routes from '../../routes';
 import './Navigation.scss';
 
 export default function Navigation() {
