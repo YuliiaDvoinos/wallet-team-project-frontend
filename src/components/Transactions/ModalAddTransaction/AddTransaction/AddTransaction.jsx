@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Datetime from 'react-datetime';
 import moment from 'moment';
 // import { closeModalTransaction } from '../../../../redux/transactions/transactions-actions';
@@ -10,8 +10,11 @@ import customStyles from '../SelectInputStyles';
 import 'react-datetime/css/react-datetime.css';
 import 'moment/locale/ru';
 import './AddTransaction.scss';
+import operations from '../../../../redux/categories/categories-operations';
+import categoriesSelectors from '../../../../redux/categories/categories-selectors';
 
 export default function AddTransaction(closeModalTransaction) {
+
   const [selectedOption, setSelectedOption] = useState(null);
   const [checked, setChecked] = useState(true);
   const [boxShadow, setBoxShadowHandle] = useState(
@@ -38,16 +41,60 @@ export default function AddTransaction(closeModalTransaction) {
 
   const yesterday = moment().subtract(1, 'day');
   const valid = current => current.isAfter(yesterday);
+  //----------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------
+  // const categoryAdapter = ({
+  //   main,
+  //   food,
+  //   car,
+  //   development,
+  //   children,
+  //   house,
+  //   education,
+  //   leisure,
+  //   other,
+  //   regularIncome,
+  //   irregularIncome,
+  // }) => ({});
+  const { fetchCategories } = operations;
+  const { getAllCategories } = categoriesSelectors;
+  const categories = useSelector(getAllCategories);
 
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'Pepsi', label: 'Pepsi' },
-    { value: 'Cola', label: 'Cola' },
-    { value: 'Nuts', label: 'Nuts' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch, fetchCategories]);
+  //
+  // let n = [];
+  // const renameCategories = name => {
+  //   switch (name) {
+  //     case 'main':
+  //       n.push('Машина');
+  //       break;
+  //   }
+  // };
 
+  // console.log(n);
+
+  let optionsIncome = [];
+  let optionsSpend = [];
+
+  const sort = array => {
+    array.forEach(({ _id, name }) =>
+      name === 'regularIncome' || name === 'irregularIncome'
+        ? optionsIncome.push({
+            value: _id,
+            label: name,
+          })
+        : optionsSpend.push({
+            value: _id,
+            label: name,
+          }),
+    );
+  };
+  sort(categories);
+
+  //-----------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------
   return (
     <div className="add-transaction__wrapper">
       <h3 className="transaction__title">Добавить транзакцию</h3>
@@ -85,9 +132,19 @@ export default function AddTransaction(closeModalTransaction) {
           {checked && (
             <div className="select__wrapper">
               <Select
-                defaultValue={selectedOption}
                 onChange={setSelectedOption}
-                options={options}
+                options={optionsSpend}
+                placeholder="Выберите категорию"
+                styles={customStyles}
+              />
+              <Icons className="select__icon" id="arrow-icon" />
+            </div>
+          )}
+          {!checked && (
+            <div className="select__wrapper">
+              <Select
+                onChange={setSelectedOption}
+                options={optionsIncome}
                 placeholder="Выберите категорию"
                 styles={customStyles}
               />
