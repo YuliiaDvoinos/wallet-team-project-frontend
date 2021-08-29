@@ -27,40 +27,10 @@ function HomeTabLarge({ transactions }) {
               <td className={type === '-' ? ItemSpendClass : ItemIncomeClass}>
                 {money}
               </td>
-              <td className="home-table__cell">
-                {type === '-' ? balance - money : balance + money}
-              </td>
+              <td className="home-table__cell">{balance}</td>
             </tr>
           ),
         )}
-
-        {/* !!!!!!!!!!!!!STATIC DATA!!!!!!!!!!!! */}
-        <tr className="home-table__row">
-          <td className="home-table__cell">05.01.19</td>
-          <td className="home-table__cell">+</td>
-          <td className="home-table__cell">Регулярный доход</td>
-          <td className="home-table__cell">
-            Бонус за январь TEST LAAAAARGE MESSSAGGGEEEE
-          </td>
-          <td className="home-table__cell home-table__cell_income">8 000.00</td>
-          <td className="home-table__cell">14 900.00</td>
-        </tr>
-        <tr className="home-table__row">
-          <td className="home-table__cell">07.01.19</td>
-          <td className="home-table__cell">-</td>
-          <td className="home-table__cell">Машина</td>
-          <td className="home-table__cell">Масло</td>
-          <td className="home-table__cell home-table__cell_spend">1000.00</td>
-          <td className="home-table__cell">13 900.00</td>
-        </tr>
-        <tr className="home-table__row">
-          <td className="home-table__cell">07.01.19</td>
-          <td className="home-table__cell">-</td>
-          <td className="home-table__cell">Продукты</td>
-          <td className="home-table__cell">Овощи на неделю</td>
-          <td className="home-table__cell home-table__cell_spend">280.00</td>
-          <td className="home-table__cell">13 870.00</td>
-        </tr>
       </tbody>
     </table>
   );

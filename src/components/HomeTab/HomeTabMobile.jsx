@@ -38,9 +38,7 @@ function HomeTabMobile({ transactions }) {
             </ul>
             <ul className="home-table__group list">
               <li className="home-table__item">Баланс</li>
-              <li className="home-table__item_value">
-                {type === '-' ? balance - money : balance + money}
-              </li>
+              <li className="home-table__item_value">{balance}</li>
             </ul>
           </ul>
         ),

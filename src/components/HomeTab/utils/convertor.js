@@ -1,6 +1,6 @@
 const convertor = array =>
   array
-    .map(({ _id, type, date, money, category, comment, prevBalance }) => {
+    .map(({ _id, type, date, money, category, comment, balance }) => {
       //type
       let convertedType;
       if (type === 'income') {
@@ -19,16 +19,15 @@ const convertor = array =>
       // if (category.name === 'car') {
       //   newCategory = 'Машина';
       // }
-      const parsedMoney = parseFloat(money);
 
       const obj = {
         _id,
         date: newDate,
         type: convertedType,
-        money: parsedMoney,
+        money,
         category,
         comment,
-        balance: prevBalance,
+        balance,
       };
       return obj;
     })
