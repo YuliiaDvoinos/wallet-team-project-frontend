@@ -5,6 +5,7 @@ import Header from '../Header';
 import Navigation from '../Navigation';
 import Currency from '../Currency';
 import '../../pages/DashboardPage/DashboardPage.scss';
+
 export default function DiagramTab() {
   const markup = (
     <>

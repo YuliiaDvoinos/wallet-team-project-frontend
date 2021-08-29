@@ -89,10 +89,10 @@ export default function AddTransaction() {
               offColor="#fff"
               boxShadow={boxShadow}
               checkedHandleIcon={
-                <Icons className="switch-icon__spend" id="checkboxSpendIcon" />
+                <Icons className="switch-icon__spend" id="spend-icon" />
               }
               uncheckedHandleIcon={
-                <Icons className="add-transaction__icon" id="addTransaction" />
+                <Icons className="add-transaction__icon" id="add-icon" />
               }
             />
             <span className={`checkbox__span ${checked && 'active-spend'}`}>
@@ -109,7 +109,7 @@ export default function AddTransaction() {
                 placeholder="Выберите категорию"
                 styles={customStyles}
               />
-              <Icons className="select__icon" id="selectInputIcon" />
+              <Icons className="select__icon" id="arrow-icon" />
             </div>
           )}
 
@@ -131,7 +131,7 @@ export default function AddTransaction() {
               inputProps={inputProps}
               isValidDate={valid}
             />
-            <Icons className="date__icon" id="transactionsDate" />
+            <Icons className="date__icon" id="calendar-icon" />
           </div>
 
           <label className="form__text">

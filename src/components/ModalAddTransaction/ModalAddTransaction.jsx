@@ -21,7 +21,7 @@ export default function ModalAddTransaction() {
         className="close-modal__button"
         onClick={closeTransaction}
       >
-        <Icons className="close-modal__icon" id="closeTransactionModal" />
+        <Icons className="close-modal__icon" id="close-icon" />
       </button>
       <AddTransaction />
     </Modal>

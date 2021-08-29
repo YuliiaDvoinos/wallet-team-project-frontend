@@ -12,7 +12,7 @@ export default function ButtonAddTransaction() {
       className="add-transaction__button"
       onClick={() => dispatch(openModalTransaction())}
     >
-      <Icons className="add-transaction__icon" id="addTransaction" />
+      <Icons className="add-transaction__icon" id="add-icon" />
     </button>
   );
 }

@@ -9,32 +9,34 @@ export default function Navigation() {
     <ul className="nav list">
       <li className="nav__item">
         <NavLink
+          exact
           to={routes.home}
           className="nav__link link"
           activeClassName="nav__link--active"
         >
-          <span className="nav__icon">
-            <Icons id="home" className="nav__icon--svg" />
-          </span>
-          <p className="nav__link--text">Главная</p>
+          <div className="nav__icon-wrapper">
+            <Icons id="home-icon" className="nav__icon" />
+          </div>
+          <p className="nav__text">Главная</p>
         </NavLink>
       </li>
+
       <li className="nav__item">
         <NavLink
           to={routes.statistics}
           className="nav__link link"
           activeClassName="nav__link--active"
         >
-          <span className="nav__icon">
-            <Icons id="diagram" className="nav__icon--svg" />
-          </span>
-          <p className="nav__link--text">Статистика</p>
+          <div className="nav__icon-wrapper">
+            <Icons id="diagram-icon" className="nav__icon" />
+          </div>
+          <p className="nav__text">Статистика</p>
         </NavLink>
       </li>
 
       <Media
         queries={{
-          small: '(min-width: 320px) and (max-width: 767px)',
+          small: '(max-width: 767px)',
         }}
       >
         {m => (
@@ -46,9 +48,10 @@ export default function Navigation() {
                   className="nav__link"
                   activeClassName="nav__link--active"
                 >
-                  <span className="nav__icon">
-                    <Icons id="currency" className="nav__icon--svg" />
-                  </span>
+                  <div className="nav__icon-wrapper">
+                    <Icons id="currency-icon" className="nav__icon" />
+                  </div>
+                  <p className="nav__text visually-hidden">Валюта</p>
                 </NavLink>
               </li>
             )}
