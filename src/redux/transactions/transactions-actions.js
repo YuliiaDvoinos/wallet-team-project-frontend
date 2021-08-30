@@ -18,3 +18,17 @@ export const getTransactionsSuccess = createAction(
 export const getTransactionsError = createAction(
   'transactions/getTransactionsError',
 );
+
+//addTransactions
+export const addTransactionsRequest = createAction(
+  'transactions/addTransactionsRequest',
+);
+export const addTransactionsSuccess = createAction(
+  'transactions/addTransactionsSuccess',
+);
+export const addTransactionsError = createAction(
+  'transactions/addTransactionsError',
+);
+
+//addNewTransaction
+export const addNewTransaction = createAction('transactions/addNewTransaction');
