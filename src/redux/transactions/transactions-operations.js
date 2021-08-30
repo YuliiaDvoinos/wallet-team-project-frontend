@@ -40,7 +40,9 @@ const fetchStats = () => async dispatch => {
 export { getTransactions, addTransaction };
 
 const operations = {
-  fetchTransactions,
+
+  getTransactions,
+
   addTransaction,
   fetchStats,
 };

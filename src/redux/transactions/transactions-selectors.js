@@ -6,6 +6,7 @@ const getAllTransactions = state => state.transactions.result;
 const getStats = state => state.transactions.result;
 const getIsModalAddTransactionOpen = state =>
   state.transactions.modalTransaction;
+const getStats = state => state.transactions.result;
 
 export {
   getAllTransactions,
