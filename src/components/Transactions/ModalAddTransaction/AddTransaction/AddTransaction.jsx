@@ -1,58 +1,61 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
 import moment from 'moment';
-import {
-  closeModalTransaction,
-  // addNewTransaction,
-} from '../../../../redux/transactions/transactions-actions';
+import 'moment/locale/ru';
 import Select from 'react-select';
 import Switch from 'react-switch';
+import { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModalTransaction } from '../../../../redux/transactions/transactions-actions';
+import { getCategories } from '../../../../redux/categories/categories-operations';
+import { getAllCategories } from '../../../../redux/categories/categories-selectors';
+import { addTransaction } from '../../../../redux/transactions/transactions-operations';
 import Icons from '../../../Icons';
 import customStyles from '../SelectInputStyles';
-import 'react-datetime/css/react-datetime.css';
-import 'moment/locale/ru';
 import './AddTransaction.scss';
-import operations from '../../../../redux/categories/categories-operations';
-import categoriesSelectors from '../../../../redux/categories/categories-selectors';
-import operationsTransactions from '../../../../redux/transactions/transactions-operations';
 
 export default function AddTransaction() {
-  const today = moment().format('DD.MM.YYYY');
-
+  // selectedOption
   const [selectedOption, setSelectedOption] = useState({
     value: '',
     label: '',
   });
+  // checked
   const [checked, setChecked] = useState(true);
-  const [sum, setSum] = useState('');
-  const [date, setDate] = useState(today);
-  const [text, setText] = useState('');
+  useEffect(() => {
+    if (checked) {
+      setBoxShadowHandle('0px 6px 15px rgba(255, 101, 150, 0.5)');
+      return;
+    }
+    setBoxShadowHandle('0px 6px 15px rgba(36, 204, 167, 0.5)');
+  }, [checked]);
+  // boxShadow
   const [boxShadow, setBoxShadowHandle] = useState(
     '0px 6px 15px rgba(255, 101, 150, 0.5)',
   );
+  // sum money
+  const [sum, setSum] = useState('');
+  // date
+  const today = moment().format('DD.MM.YYYY');
+  const [date, setDate] = useState(today);
+  // comment
+  const [comment, setComment] = useState('');
 
-  const [statefull, setStateFull] = useState({});
-
+  // HANDLE
   const dispatch = useDispatch();
-  const closeTransaction = useCallback(() => {
-    return dispatch(closeModalTransaction());
+
+  useEffect(() => {
+    dispatch(getCategories());
   }, [dispatch]);
+  const categories = useSelector(getAllCategories);
 
-  const handleChangeCheckbox = nextChecked => {
-    setChecked(nextChecked);
-  };
-
-  const handleChangeDate = e => {
-    setDate(e.format('DD.MM.YYYY'));
-  };
-
+  // change
   const handleChange = e => {
     const { name, value } = e.target;
 
     switch (name) {
-      case 'text':
-        setText(value);
+      case 'comment':
+        setComment(value);
         break;
 
       case 'sum':
@@ -67,47 +70,38 @@ export default function AddTransaction() {
         console.log('error');
     }
   };
+  const handleChangeCheckbox = nextChecked => {
+    setChecked(nextChecked);
+  };
+  const handleChangeDate = e => {
+    setDate(e.format('DD.MM.YYYY'));
+  };
 
-  const handleSubmit = useCallback(() => {
-    const month = date.slice(3, 5);
-    const year = date.slice(6);
-    const money = Number(sum);
-    const category = selectedOption.value;
-    const type = !checked ? 'income' : 'spend';
+  // modal close
+  const closeModal = useCallback(() => {
+    dispatch(closeModalTransaction());
+  }, [dispatch]);
 
-    setStateFull({
-      date: date,
-      month,
-      year,
-      comment: text,
-      type,
-      category,
-      money,
-    });
+  // submit
+  const handleSubmit = useCallback(
+    event => {
+      event.preventDefault();
 
-    console.log(statefull);
-    dispatch(operationsTransactions.addTransaction(statefull));
-    // // dispatch(addNewTransaction(statefull));
-    // closeTransaction();
-  }, [
-    date,
-    text,
-    checked,
-    selectedOption,
-    sum,
-    statefull,
-    // closeTransaction,
-    dispatch,
-  ]);
-
-  useEffect(() => {
-    if (checked) {
-      setBoxShadowHandle('0px 6px 15px rgba(255, 101, 150, 0.5)');
-      return;
-    }
-
-    setBoxShadowHandle('0px 6px 15px rgba(36, 204, 167, 0.5)');
-  }, [checked]);
+      dispatch(
+        addTransaction({
+          date,
+          month: date.slice(3, 5),
+          year: date.slice(6),
+          money: Number(sum),
+          comment,
+          type: !checked ? 'income' : 'spend',
+          category: selectedOption.value,
+        }),
+      );
+      closeModal();
+    },
+    [checked, comment, date, selectedOption.value, sum, closeModal, dispatch],
+  );
 
   const yesterday = moment().subtract(1, 'day');
   const valid = current => current.isAfter(yesterday);
@@ -115,46 +109,12 @@ export default function AddTransaction() {
     className: 'input date__input',
   };
 
-  //----------------------------------------------------------------------------------------
-  //----------------------------------------------------------------------------------------
-  // const categoryAdapter = ({
-  //   main,
-  //   food,
-  //   car,
-  //   development,
-  //   children,
-  //   house,
-  //   education,
-  //   leisure,
-  //   other,
-  //   regularIncome,
-  //   irregularIncome,
-  // }) => ({});
-  const { fetchCategories } = operations;
-  const { getAllCategories } = categoriesSelectors;
-  const categories = useSelector(getAllCategories);
-
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch, fetchCategories]);
-  //
-  // let n = [];
-  // const renameCategories = name => {
-  //   switch (name) {
-  //     case 'main':
-  //       n.push('Машина');
-  //       break;
-  //   }
-  // };
-
-  // console.log(n);
-
   let optionsIncome = [];
   let optionsSpend = [];
 
   const sort = array => {
     array.forEach(({ _id, name }) =>
-      name === 'regularIncome' || name === 'irregularIncome'
+      name === 'Регулярный доход' || name === 'Нерегулярный доход'
         ? optionsIncome.push({
             value: _id,
             label: name,
@@ -167,14 +127,12 @@ export default function AddTransaction() {
   };
   sort(categories);
 
-  //-----------------------------------------------------------------------------------------
-  //----------------------------------------------------------------------------------------
   return (
     <div className="add-transaction__wrapper">
       <h3 className="transaction__title">Добавить транзакцию</h3>
 
       <div className="transaction__wrapper">
-        <form className="transaction__form">
+        <form className="transaction__form" onSubmit={handleSubmit}>
           <div className="checkbox__wrapper">
             <span className={`checkbox__span ${!checked && 'active-income'}`}>
               Доход
@@ -260,29 +218,25 @@ export default function AddTransaction() {
           <label className="form__text">
             <input
               name="text"
-              value={text}
+              value={comment}
               type="text"
               onChange={handleChange}
               className="input text__input"
               placeholder="Комментарий"
             ></input>
           </label>
-        </form>
 
-        <button
-          type="button"
-          className="transaction__button"
-          onClick={handleSubmit}
-        >
-          Добавить
-        </button>
-        <button
-          type="button"
-          className="transaction__button transaction__button--cancel"
-          onClick={closeTransaction}
-        >
-          Отмена
-        </button>
+          <button type="submit" className="transaction__button">
+            Добавить
+          </button>
+          <button
+            type="button"
+            className="transaction__button transaction__button--cancel"
+            onClick={closeModal}
+          >
+            Отмена
+          </button>
+        </form>
       </div>
     </div>
   );

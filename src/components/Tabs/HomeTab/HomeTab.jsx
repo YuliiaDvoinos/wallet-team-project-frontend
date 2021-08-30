@@ -1,23 +1,25 @@
 import { useMedia } from 'react-media';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import operations from '../../../redux/transactions/transactions-operations';
-import transactionSelectors from '../../../redux/transactions/transactions-selectors';
+import { getTransactions } from '../../../redux/transactions/transactions-operations';
+import {
+  getAllTransactions,
+  getAddedTransactions,
+} from '../../../redux/transactions/transactions-selectors';
 import convertor from './utils';
 import HomeTabLarge from './HomeTabLarge';
 import HomeTabMobile from './HomeTabMobile';
 
 export default function HomeTab() {
-  const { fetchTransactions } = operations;
-  const { getAllTransactions } = transactionSelectors;
+  const addedTransaction = useSelector(getAddedTransactions);
   const transactions = useSelector(getAllTransactions);
+  const convertedArr = convertor(transactions);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTransactions());
-  }, [dispatch, fetchTransactions]);
-
-  const convertedArr = convertor(transactions);
+    dispatch(getTransactions());
+  }, [dispatch, addedTransaction]);
 
   const GLOBAL_MEDIA_QUERIES = {
     small: '(max-width: 767px)',

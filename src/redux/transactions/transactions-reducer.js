@@ -5,7 +5,6 @@ import {
   closeModalTransaction,
   getTransactionsSuccess,
   addTransactionsSuccess,
-  addNewTransaction,
 } from './transactions-actions';
 
 const modalTransaction = createReducer(false, {
@@ -13,17 +12,16 @@ const modalTransaction = createReducer(false, {
   [closeModalTransaction]: () => false,
 });
 
-const result = createReducer([], {
+const allTransactions = createReducer([], {
   [getTransactionsSuccess]: (_, { payload }) => payload,
-  [addNewTransaction]: (state, { payload }) => [...state, payload],
 });
 
-const transactions = createReducer([], {
+const addedTransactions = createReducer([], {
   [addTransactionsSuccess]: (state, { payload }) => [...state, payload],
 });
 
 export default combineReducers({
   modalTransaction,
-  result,
-  transactions,
+  allTransactions,
+  addedTransactions,
 });

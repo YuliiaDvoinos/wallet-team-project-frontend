@@ -1,11 +1,12 @@
-const getAllTransactions = state => state.transactions.result;
+const getAllTransactions = state => state.transactions.allTransactions;
+
+const getAddedTransactions = state => state.transactions.addedTransactions;
 
 const getIsModalAddTransactionOpen = state =>
   state.transactions.modalTransaction;
 
-const transactionSelectors = {
+export {
   getAllTransactions,
+  getAddedTransactions,
   getIsModalAddTransactionOpen,
 };
-
-export default transactionSelectors;

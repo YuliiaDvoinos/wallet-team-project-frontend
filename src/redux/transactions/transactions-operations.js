@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as actions from './transactions-actions';
 
 //get Transactions
-const fetchTransactions = () => async dispatch => {
+const getTransactions = () => async dispatch => {
   dispatch(actions.getTransactionsRequest());
 
   try {
@@ -13,20 +13,16 @@ const fetchTransactions = () => async dispatch => {
   }
 };
 
-const addTransaction = Statefull => async dispatch => {
+const addTransaction = transactionData => async dispatch => {
   dispatch(actions.addTransactionsRequest());
 
   try {
-    const { data } = await axios.post('/transactions', Statefull);
-    dispatch(actions.addTransactionsSuccess(data));
+    const { data } = await axios.post('/transactions', transactionData);
+
+    dispatch(actions.addTransactionsSuccess(data.data.result));
   } catch (error) {
     dispatch(actions.addTransactionsError(error.message));
   }
 };
 
-const operations = {
-  fetchTransactions,
-  addTransaction,
-};
-
-export default operations;
+export { getTransactions, addTransaction };

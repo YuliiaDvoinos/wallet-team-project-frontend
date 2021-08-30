@@ -1,9 +1,9 @@
 import { createAction } from '@reduxjs/toolkit';
 
+// modal
 export const openModalTransaction = createAction(
   'transactions/openModalTransaction',
 );
-
 export const closeModalTransaction = createAction(
   'transactions/closeModalTransaction',
 );
@@ -29,6 +29,3 @@ export const addTransactionsSuccess = createAction(
 export const addTransactionsError = createAction(
   'transactions/addTransactionsError',
 );
-
-//addNewTransaction
-export const addNewTransaction = createAction('transactions/addNewTransaction');

@@ -1,12 +1,10 @@
 import { useSelector } from 'react-redux';
-import transactionSelectors from '../../../redux/transactions/transactions-selectors';
+import { getIsModalAddTransactionOpen } from '../../../redux/transactions/transactions-selectors';
 import { ButtonAddTransaction, ModalAddTransaction } from '../../Transactions';
 import './HomeTabLarge.scss';
 
 function HomeTabLarge({ transactions }) {
-  const isModalAddTransactionOpen = useSelector(
-    transactionSelectors.getIsModalAddTransactionOpen,
-  );
+  const isModalAddTransactionOpen = useSelector(getIsModalAddTransactionOpen);
 
   const ItemSpendClass = 'home-table__cell home-table__cell_spend';
   const ItemIncomeClass = 'home-table__cell home-table__cell_income';
