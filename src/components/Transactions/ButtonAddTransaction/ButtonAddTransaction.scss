@@ -1,29 +1,27 @@
 @import 'styles/shared';
 
-@media screen and (min-width: 320px) {
-  .add-transaction {
-    &__button {
-      position: fixed;
-      right: 20px;
-      bottom: 30px;
-      display: inline-block;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      background-color: $button-color;
-    }
+.add-transaction {
+  &__button {
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: $button-color;
+    box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  }
 
-    &__icon {
-      width: 20px;
-      height: 20px;
-      fill: $modal-color;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+  &__icon {
+    width: 20px;
+    height: 20px;
+    fill: $modal-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 

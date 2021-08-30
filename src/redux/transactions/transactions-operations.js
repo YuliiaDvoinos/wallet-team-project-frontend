@@ -24,5 +24,25 @@ const addTransaction = transactionData => async dispatch => {
     dispatch(actions.addTransactionsError(error.message));
   }
 };
+//get TransactionsStats
+const fetchStats = () => async dispatch => {
+  dispatch(actions.getTransactionsStatsRequest());
+
+  try {
+    const { data } = await axios.get('/transactions/statistics');
+
+    dispatch(actions.getTransactionsSuccess(data));
+  } catch (error) {
+    dispatch(actions.getTransactionsStatsError());
+  }
+};
 
 export { getTransactions, addTransaction };
+
+const operations = {
+  getTransactions,
+  addTransaction,
+  fetchStats,
+};
+
+export default operations;
