@@ -1,14 +1,12 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// modal
 export const openModalTransaction = createAction(
   'transactions/openModalTransaction',
 );
 export const closeModalTransaction = createAction(
   'transactions/closeModalTransaction',
 );
-
-//getTransactions
+//////////////////////////////////////////////////
 export const getTransactionsRequest = createAction(
   'transactions/getTransactionsRequest',
 );
@@ -18,8 +16,7 @@ export const getTransactionsSuccess = createAction(
 export const getTransactionsError = createAction(
   'transactions/getTransactionsError',
 );
-
-//addTransactions
+//////////////////////////////////////////////////
 export const addTransactionsRequest = createAction(
   'transactions/addTransactionsRequest',
 );
@@ -29,17 +26,13 @@ export const addTransactionsSuccess = createAction(
 export const addTransactionsError = createAction(
   'transactions/addTransactionsError',
 );
-
-//addNewTransaction
-export const addNewTransaction = createAction('transactions/addNewTransaction');
-
-//getStats
-export const getTransactionsStatsRequest = createAction(
-  'transactions/getTransactionsStatsRequest',
+//////////////////////////////////////////////////
+export const getStatisticsRequest = createAction(
+  'transactions/getStatisticsRequest',
 );
-export const getTransactionsStatsSuccess = createAction(
-  'transactions/getTransactionsStatsSuccess',
+export const getStatisticsSuccess = createAction(
+  'transactions/getStatisticsSuccess',
 );
-export const getTransactionsStatsError = createAction(
-  'transactions/getTransactionsStatsError',
+export const getStatisticsError = createAction(
+  'transactions/getStatisticsError',
 );

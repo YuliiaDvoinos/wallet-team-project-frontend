@@ -1,13 +1,12 @@
 import './Chart.scss';
-export default function Chart() {
-  const markup = (
+export default function Chart({ statistics: { totalSpend } }) {
+  return (
     <>
       <div className="chart">
         <div className="chart__contents">
-          <span className="chart__ballance">₴ 24 000.00</span>
+          <span className="chart__ballance">&#8372; {totalSpend}</span>
         </div>
       </div>
     </>
   );
-  return markup;
 }

@@ -11,8 +11,7 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
-
-// register
+//////////////////////////////////////////////////
 export const register = registerFormData => async dispatch => {
   dispatch(actions.registerRequest());
 
@@ -24,8 +23,7 @@ export const register = registerFormData => async dispatch => {
     dispatch(actions.registerError(error.message));
   }
 };
-
-// login
+//////////////////////////////////////////////////
 export const login = loginFormData => async dispatch => {
   dispatch(actions.loginRequest());
 
@@ -37,8 +35,7 @@ export const login = loginFormData => async dispatch => {
     dispatch(actions.loginError(error.message));
   }
 };
-
-// logout
+//////////////////////////////////////////////////
 export const logout = () => async dispatch => {
   dispatch(actions.logoutRequest());
 
@@ -50,8 +47,7 @@ export const logout = () => async dispatch => {
     dispatch(actions.logoutError(error.message));
   }
 };
-
-// getCurrentUser
+//////////////////////////////////////////////////
 export const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
