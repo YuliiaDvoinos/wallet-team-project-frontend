@@ -2,7 +2,10 @@ import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Datetime from 'react-datetime';
 import moment from 'moment';
-import { closeModalTransaction } from '../../../../redux/transactions/transactions-actions';
+import {
+  closeModalTransaction,
+  // addNewTransaction,
+} from '../../../../redux/transactions/transactions-actions';
 import Select from 'react-select';
 import Switch from 'react-switch';
 import Icons from '../../../Icons';
@@ -12,24 +15,90 @@ import 'moment/locale/ru';
 import './AddTransaction.scss';
 import operations from '../../../../redux/categories/categories-operations';
 import categoriesSelectors from '../../../../redux/categories/categories-selectors';
+import operationsTransactions from '../../../../redux/transactions/transactions-operations';
 
-export default function AddTransaction(closeModalTransaction) {
+export default function AddTransaction() {
+  const today = moment().format('DD.MM.YYYY');
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState({
+    value: '',
+    label: '',
+  });
   const [checked, setChecked] = useState(true);
+  const [sum, setSum] = useState('');
+  const [date, setDate] = useState(today);
+  const [text, setText] = useState('');
   const [boxShadow, setBoxShadowHandle] = useState(
     '0px 6px 15px rgba(255, 101, 150, 0.5)',
   );
-  // const [checked, setChecked] = useState(true);
+
+  const [statefull, setStateFull] = useState({});
 
   const dispatch = useDispatch();
   const closeTransaction = useCallback(() => {
     return dispatch(closeModalTransaction());
   }, [dispatch]);
 
-  const handleChange = nextChecked => {
+  const handleChangeCheckbox = nextChecked => {
     setChecked(nextChecked);
   };
+
+  const handleChangeDate = e => {
+    setDate(e.format('DD.MM.YYYY'));
+  };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case 'text':
+        setText(value);
+        break;
+
+      case 'sum':
+        setSum(value);
+        break;
+
+      case 'selectedOption':
+        setSelectedOption(value);
+        break;
+
+      default:
+        console.log('error');
+    }
+  };
+
+  const handleSubmit = useCallback(() => {
+    const month = date.slice(3, 5);
+    const year = date.slice(6);
+    const money = Number(sum);
+    const category = selectedOption.value;
+    const type = !checked ? 'income' : 'spend';
+
+    setStateFull({
+      date: date,
+      month,
+      year,
+      comment: text,
+      type,
+      category,
+      money,
+    });
+
+    console.log(statefull);
+    dispatch(operationsTransactions.addTransaction(statefull));
+    // // dispatch(addNewTransaction(statefull));
+    // closeTransaction();
+  }, [
+    date,
+    text,
+    checked,
+    selectedOption,
+    sum,
+    statefull,
+    // closeTransaction,
+    dispatch,
+  ]);
 
   useEffect(() => {
     if (checked) {
@@ -40,12 +109,12 @@ export default function AddTransaction(closeModalTransaction) {
     setBoxShadowHandle('0px 6px 15px rgba(36, 204, 167, 0.5)');
   }, [checked]);
 
+  const yesterday = moment().subtract(1, 'day');
+  const valid = current => current.isAfter(yesterday);
   const inputProps = {
     className: 'input date__input',
   };
 
-  const yesterday = moment().subtract(1, 'day');
-  const valid = current => current.isAfter(yesterday);
   //----------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------
   // const categoryAdapter = ({
@@ -111,7 +180,9 @@ export default function AddTransaction(closeModalTransaction) {
               Доход
             </span>
             <Switch
-              onChange={handleChange}
+              name="checked"
+              value={checked}
+              onChange={handleChangeCheckbox}
               checked={checked}
               className="checkbox__button"
               height={40}
@@ -137,6 +208,8 @@ export default function AddTransaction(closeModalTransaction) {
           {checked && (
             <div className="select__wrapper">
               <Select
+                name="selectedOption"
+                value={selectedOption}
                 onChange={setSelectedOption}
                 options={optionsSpend}
                 placeholder="Выберите категорию"
@@ -148,6 +221,8 @@ export default function AddTransaction(closeModalTransaction) {
           {!checked && (
             <div className="select__wrapper">
               <Select
+                name="selectedOption"
+                value={selectedOption}
                 onChange={setSelectedOption}
                 options={optionsIncome}
                 placeholder="Выберите категорию"
@@ -160,6 +235,9 @@ export default function AddTransaction(closeModalTransaction) {
           <div className="form__wrapper">
             <label className="form__sum">
               <input
+                name="sum"
+                value={sum}
+                onChange={handleChange}
                 type="text"
                 className="input sum__input"
                 placeholder="0.00"
@@ -169,25 +247,33 @@ export default function AddTransaction(closeModalTransaction) {
             <Datetime
               className="date__wrapper"
               locale="ru"
-              initialValue={new Date()}
+              initialValue={moment()}
               closeOnSelect={true}
               timeFormat={false}
               inputProps={inputProps}
               isValidDate={valid}
+              onChange={handleChangeDate}
             />
             <Icons className="date__icon" id="calendar-icon" />
           </div>
 
           <label className="form__text">
             <input
+              name="text"
+              value={text}
               type="text"
+              onChange={handleChange}
               className="input text__input"
               placeholder="Комментарий"
             ></input>
           </label>
         </form>
 
-        <button type="button" className="transaction__button">
+        <button
+          type="button"
+          className="transaction__button"
+          onClick={handleSubmit}
+        >
           Добавить
         </button>
         <button

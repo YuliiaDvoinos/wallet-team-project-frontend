@@ -13,8 +13,20 @@ const fetchTransactions = () => async dispatch => {
   }
 };
 
+const addTransaction = Statefull => async dispatch => {
+  dispatch(actions.addTransactionsRequest());
+
+  try {
+    const { data } = await axios.post('/transactions', Statefull);
+    dispatch(actions.addTransactionsSuccess(data));
+  } catch (error) {
+    dispatch(actions.addTransactionsError(error.message));
+  }
+};
+
 const operations = {
   fetchTransactions,
+  addTransaction,
 };
 
 export default operations;
