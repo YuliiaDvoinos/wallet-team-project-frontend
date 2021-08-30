@@ -29,3 +29,17 @@ export const addTransactionsSuccess = createAction(
 export const addTransactionsError = createAction(
   'transactions/addTransactionsError',
 );
+
+//addNewTransaction
+export const addNewTransaction = createAction('transactions/addNewTransaction');
+
+//getStats
+export const getTransactionsStatsRequest = createAction(
+  'transactions/getTransactionsStatsRequest',
+);
+export const getTransactionsStatsSuccess = createAction(
+  'transactions/getTransactionsStatsSuccess',
+);
+export const getTransactionsStatsError = createAction(
+  'transactions/getTransactionsStatsError',
+);
