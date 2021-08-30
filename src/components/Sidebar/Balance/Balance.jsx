@@ -1,9 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { getUserBalance } from '../../../redux/auth/auth-selectors';
+import { getCurrentUser } from '../../../redux/auth/auth-operations';
+import { getAddedTransactions } from '../../../redux/transactions/transactions-selectors';
 import './Balance.scss';
 
 export default function Balance() {
+  const addedTransaction = useSelector(getAddedTransactions);
   const userBalance = useSelector(getUserBalance);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch, addedTransaction]);
 
   return (
     <div className="balance">

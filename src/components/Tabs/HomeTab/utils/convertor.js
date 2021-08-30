@@ -10,13 +10,12 @@ const convertor = array =>
       }
 
       //date
-      const arr = [...date];
-      arr.splice(6, 2);
-      const newDate = arr.join('');
+      const dateArr = [...date];
+      dateArr.splice(6, 2);
 
       const obj = {
         _id,
-        date: newDate,
+        date: dateArr.join(''),
         type: convertedType,
         money,
         category,
