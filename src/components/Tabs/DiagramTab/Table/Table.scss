@@ -20,6 +20,7 @@
         font-weight: normal;
         @include font(18px, 24px);
       }
+
       &:last-of-type {
         margin-top: 20px;
       }
@@ -28,8 +29,6 @@
   .statistics {
     width: 100%;
     margin-top: 20px;
-
-    //title
 
     &__title-wrapper {
       display: flex;
@@ -48,7 +47,7 @@
       color: $text-color;
       font-weight: 700;
     }
-    //main
+
     &__item {
       height: 58px;
       border-bottom: 1px solid #dcdcdf;
@@ -67,7 +66,6 @@
     &__color {
       width: 24px;
       height: 24px;
-      background-color: #fed057;
       margin-right: 15px;
     }
 
@@ -77,6 +75,7 @@
       text-align: right;
     }
   }
+
   .outcome {
     width: 100%;
     margin-top: 15px;
@@ -133,7 +132,6 @@
   }
 
   .statistics {
-    //main
     &__item {
       height: 54px;
       @include font(16px, 24px);

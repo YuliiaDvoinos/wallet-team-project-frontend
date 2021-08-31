@@ -1,14 +1,13 @@
 import './Chart.scss';
 import { Doughnut } from 'react-chartjs-2';
+
 export default function Chart({ statistics }) {
   const data = {
     datasets: [
       {
-        label: '# of Votes',
         data: statistics.categoriesSummary
           ? Object.values(statistics.categoriesSummary)
           : null,
-
         backgroundColor: [
           '#FED057',
           '#FFD8D0',
@@ -24,7 +23,7 @@ export default function Chart({ statistics }) {
           '#FED057',
           '#FFD8D0',
           '#FD9498',
-          ' #C5BAFF',
+          '#C5BAFF',
           '#6E78E8',
           '#4A56E2',
           '#81E1FF',
@@ -36,6 +35,7 @@ export default function Chart({ statistics }) {
       },
     ],
   };
+
   return (
     <div className="chart">
       <Doughnut className="chart__contents" data={data} />

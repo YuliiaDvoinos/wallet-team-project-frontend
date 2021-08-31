@@ -2,6 +2,7 @@ import './Table.scss';
 import { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getQueryStatistics } from '../../../../redux/transactions/transactions-operations';
+
 export default function Table({
   statistics: {
     categoriesSummary,
@@ -11,12 +12,25 @@ export default function Table({
     uniqueYear,
   },
 }) {
+  const backgroundColor = [
+    '#FED057',
+    '#FFD8D0',
+    '#FD9498',
+    '#C5BAFF',
+    '#6E78E8',
+    '#4A56E2',
+    '#81E1FF',
+    '#24CCA7',
+    '#00AD84',
+  ];
+
   const [filterData, setFilterData] = useState({
     month: '',
     year: '',
   });
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getQueryStatistics(filterData));
   }, [dispatch, filterData]);
@@ -26,8 +40,8 @@ export default function Table({
       currentTarget: { name, value },
     } = e;
     setFilterData(prev => ({ ...prev, [name]: value }));
-    
   }, []);
+
   return (
     <div className="table">
       <div className="filter">
@@ -56,22 +70,19 @@ export default function Table({
         </datalist>
       </div>
 
-      {/* statistics */}
-
       <ul className="statistics list">
-        {/* title */}
         <li className="statistics__title-wrapper">
           <span className="statistics__title-part">Категория</span>
           <span className="statistics__title-part">Сумма</span>
         </li>
 
-        {/* main */}
         {categoriesSummary &&
           Object.keys(categoriesSummary).map((category, index) => (
-            // statistics__item
-
             <li className="statistics__item" key={index}>
-              <span className="statistics__color "></span>
+              <span
+                className="statistics__color"
+                style={{ backgroundColor: backgroundColor[index] }}
+              ></span>
               {category}
               <span className="statistics__costs">
                 {categoriesSummary[category]}
@@ -79,7 +90,7 @@ export default function Table({
             </li>
           ))}
       </ul>
-      {/* outcome */}
+
       <ul className="outcome list">
         <li className="outcome__item">
           <span className="outcome__type">Расходы:</span>
