@@ -1,23 +1,23 @@
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
-import moment from 'moment';
-import 'moment/locale/ru';
-import Select from 'react-select';
-import Switch from 'react-switch';
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Datetime from 'react-datetime';
+import moment from 'moment';
+import Select from 'react-select';
+import Switch from 'react-switch';
 import { closeModalTransaction } from '../../../../redux/transactions/transactions-actions';
 import { getCategories } from '../../../../redux/categories/categories-operations';
 import { getAllCategories } from '../../../../redux/categories/categories-selectors';
 import { addTransaction } from '../../../../redux/transactions/transactions-operations';
 import Icons from '../../../Icons';
 import customStyles from '../SelectInputStyles';
+import 'react-datetime/css/react-datetime.css';
+import 'moment/locale/ru';
 import './AddTransaction.scss';
 
 export default function AddTransaction() {
   // selectedOption
   const [selectedOption, setSelectedOption] = useState({
-    value: '',
+    value: null,
     label: '',
   });
   // checked
@@ -72,6 +72,7 @@ export default function AddTransaction() {
   };
   const handleChangeCheckbox = nextChecked => {
     setChecked(nextChecked);
+    setSelectedOption({ selectedOption: { value: null, label: '' } });
   };
   const handleChangeDate = e => {
     setDate(e.format('DD.MM.YYYY'));
@@ -167,7 +168,6 @@ export default function AddTransaction() {
             <div className="select__wrapper">
               <Select
                 name="selectedOption"
-                value={selectedOption}
                 onChange={setSelectedOption}
                 options={optionsSpend}
                 placeholder="Выберите категорию"
@@ -180,7 +180,6 @@ export default function AddTransaction() {
             <div className="select__wrapper">
               <Select
                 name="selectedOption"
-                value={selectedOption}
                 onChange={setSelectedOption}
                 options={optionsIncome}
                 placeholder="Выберите категорию"
@@ -217,7 +216,7 @@ export default function AddTransaction() {
 
           <label className="form__text">
             <input
-              name="text"
+              name="comment"
               value={comment}
               type="text"
               onChange={handleChange}

@@ -13,10 +13,9 @@ const customStyles = {
   menu: provided => ({
     ...provided,
     boxShadow: 'none',
-    filter:
-      'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     borderRadius: 20,
     backgroundColor: 'inherit',
+    // backdropFilter: 'blur(50px)',
   }),
   menuList: provided => ({
     ...provided,
@@ -28,9 +27,10 @@ const customStyles = {
     },
     padding: 0,
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-    backdropFilter: 'blur(50px)',
+    // backdropFilter: 'blur(50px)',
     borderRadius: 20,
+    filter:
+      'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
   }),
   control: () => ({
     '@media screen and (min-width: 320px)': {
