@@ -87,13 +87,14 @@ export default function AddTransaction() {
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
-
+      const number = Number(sum);
+      const convertedSum = number.toFixed(2);
       dispatch(
         addTransaction({
           date,
           month: date.slice(3, 5),
           year: date.slice(6),
-          money: Number(sum),
+          money: Number(convertedSum),
           comment,
           type: !checked ? 'income' : 'spend',
           category: selectedOption.value,
