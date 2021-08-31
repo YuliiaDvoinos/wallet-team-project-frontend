@@ -1,25 +1,25 @@
 @import 'styles/shared';
 
-@media screen and (min-width: 320px) {
-  .diagram__title {
+.diagram {
+  // border: 1px solid black;
+
+  &__title {
     @include font(30px, 45px);
     font-family: $secondary-font;
     font-weight: normal;
-    // margin-top: 43px;
   }
-  .diagram__data {
+  &__data {
     margin-top: 10px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  // .statistics__title {
-  //   margin-top: 40px;
-  // }
-  .diagram__data {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+  .diagram {
+    &__data {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
   }
 }
 
@@ -27,17 +27,5 @@
   .diagram {
     display: flex;
     flex-direction: column;
-    width: 815px;
-
-    &__data {
-      width: 815px;
-      // padding-left: 30px;
-      // border-left: 1px solid #e7e5f2;
-      // box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
-      //   1px 0px 0px rgba(255, 255, 255, 0.6);
-    }
-    // .statistics__title {
-    //   margin-top: 30px;
-    // }
   }
 }

@@ -28,31 +28,34 @@ export default function Currency() {
   }, []);
 
   return (
-    <div className={`blur-${loading}`}>
-      <div className="currency">
+    <div className="currency">
+      <div className={`currency__blur-${loading}`}>
         {loading && <Spinner />}
+        {/*  */}
         <ul className="currency__title-list list">
-          <li className="currency__title-list--title">Валюта</li>
-          <li className="currency__title-list--title">Покупка</li>
-          <li className="currency__title-list--title">Продажа</li>
+          <li className="currency__title">Валюта</li>
+          <li className="currency__title">Покупка</li>
+          <li className="currency__title">Продажа</li>
         </ul>
-        <div className="prise-list-wrapper">
-          <ul className="currency__prise-list list">
-            <li>USD</li>
-            <li>{USD.buy}</li>
-            <li>{USD.sale}</li>
-          </ul>
-          <ul className="currency__prise-list list">
-            <li>EUR</li>
-            <li>{EUR.buy}</li>
-            <li>{EUR.sale}</li>
-          </ul>
-          <ul className="currency__prise-list list">
-            <li>RUB</li>
-            <li>{RUB.buy}</li>
-            <li>{RUB.sale}</li>
-          </ul>
-        </div>
+        {/*  */}
+        <ul className="currency__price-list">
+          <li className="currency__price list">
+            <span>USD</span>
+            <span>{USD.buy}</span>
+            <span>{USD.sale}</span>
+          </li>
+          <li className="currency__price list">
+            <span>EUR</span>
+            <span>{EUR.buy}</span>
+            <span>{EUR.sale}</span>
+          </li>
+          <li className="currency__price list">
+            <span>RUB</span>
+            <span>{RUB.buy}</span>
+            <span>{RUB.sale}</span>
+          </li>
+        </ul>
+        {/*  */}
       </div>
     </div>
   );
