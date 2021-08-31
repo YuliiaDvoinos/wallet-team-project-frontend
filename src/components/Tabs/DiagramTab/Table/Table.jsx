@@ -41,6 +41,14 @@ export default function Table({
     } = e;
     setFilterData(prev => ({ ...prev, [name]: value }));
   }, []);
+  const onClick = useCallback(e => {
+    e.currentTarget.value = '';
+    const {
+      currentTarget: { name, value },
+    } = e;
+    
+    setFilterData(prev => ({ ...prev, [name]: value }));
+  }, []);
 
   return (
     <div className="table">
@@ -52,6 +60,7 @@ export default function Table({
           list="months"
           placeholder="Месяц"
           onChange={handleChange}
+          onClick={onClick}
         />
         <datalist id="months">
           {uniqueMonth && uniqueMonth.map(el => <option key={el} value={el} />)}
@@ -64,6 +73,7 @@ export default function Table({
           list="years"
           placeholder="Год"
           onChange={handleChange}
+          onClick={onClick}
         />
         <datalist id="years">
           {uniqueYear && uniqueYear.map(el => <option key={el} value={el} />)}
