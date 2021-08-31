@@ -9,6 +9,24 @@
 body {
   font-family: $primary-font;
   font-style: normal;
+  background-color: $body-background-color;
+
+  @media screen and (min-width: 768px) {
+    background: url('../images/UI/tablet/ellipse-orange-tablet.svg') no-repeat
+        100% 0,
+      url('../images/UI/tablet/ellipse-purple-tablet.svg') no-repeat 0 100%;
+    background-color: $body-background-color;
+  }
+  @media screen and (min-width: 1280px) {
+    background: url('../images/UI/desktop/ellipse-orange-desktop.svg') no-repeat
+        100% 0,
+      url('../images/UI/desktop/ellipse-purple-desktop.svg') no-repeat 0 100%;
+    background-color: $body-background-color;
+  }
+}
+#root {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(50px);
 }
 address {
   font-style: normal;
