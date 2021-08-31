@@ -14,9 +14,9 @@ export default function DiagramTab() {
   const statistics = useSelector(getAllStatistics);
 
   return (
-    <section className="statistics">
-      <h1 className="statistics__title">Статистика</h1>
-      <div className="statistics__data-container">
+    <section className="diagram">
+      <h1 className="diagram__title">Статистика</h1>
+      <div className="diagram__data">
         <Chart statistics={statistics} />
         <Table statistics={statistics} />
         {/* <Doughnut data={data} /> */}

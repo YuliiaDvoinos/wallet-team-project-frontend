@@ -5,7 +5,7 @@ export default function Table({
 }) {
   return (
     <div className="table">
-      <div className="table__filter">
+      <div className="filter">
         <input
           className="filter__input"
           name="month"
@@ -44,7 +44,7 @@ export default function Table({
 
       {/* statistics */}
 
-      <ul className="statistics__list list">
+      <ul className="statistics list">
         {/* title */}
         <li className="statistics__title-wrapper">
           <span className="statistics__title-part">Категория</span>
@@ -68,11 +68,15 @@ export default function Table({
       <ul className="outcome list">
         <li className="outcome__item">
           <span className="outcome__type">Расходы:</span>
-          <span className="outcome__total expenses">{totalSpend}</span>
+          <span className="outcome__total outcome__total--expenses">
+            {totalSpend}
+          </span>
         </li>
         <li className="outcome__item">
           <span className="outcome__type">Доходы:</span>
-          <span className="outcome__total  income">{totalIncome}</span>
+          <span className="outcome__total  outcome__total--income">
+            {totalIncome}
+          </span>
         </li>
       </ul>
     </div>
