@@ -26,13 +26,16 @@
 @media screen and (min-width: 1280px) {
   .statistics {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     width: 815px;
-
+    &__list {
+      width: 350px;
+      margin-top: 20px;
+    }
     &__container {
       width: 815px;
       padding-left: 30px;
-      border-left: 1px solid #e7e5f2;
+      // border-left: 1px solid #e7e5f2;
       // box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       //   1px 0px 0px rgba(255, 255, 255, 0.6);
     }

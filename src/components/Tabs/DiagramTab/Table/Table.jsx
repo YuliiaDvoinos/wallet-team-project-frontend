@@ -44,7 +44,7 @@ export default function Table({
 
       {/* statistics */}
 
-      <ul className="statistics list">
+      <ul className="statistics__list list">
         {/* title */}
         <li className="statistics__title-wrapper">
           <span className="statistics__title-part">Категория</span>
