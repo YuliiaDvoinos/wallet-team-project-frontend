@@ -1,6 +1,6 @@
-import { useMedia } from 'react-media';
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import Media from 'react-media';
 import { getTransactions } from '../../../redux/transactions/transactions-operations';
 import {
   getAllTransactions,
@@ -21,19 +21,21 @@ export default function HomeTab() {
     dispatch(getTransactions());
   }, [dispatch, addedTransaction]);
 
-  const GLOBAL_MEDIA_QUERIES = {
-    small: '(max-width: 767px)',
-    large: '(min-width: 768px)',
-  };
-  const matches = useMedia({ queries: GLOBAL_MEDIA_QUERIES });
-
   return (
-    <>
-      {matches.small ? (
-        <HomeTabMobile transactions={convertedArr} />
-      ) : (
-        <HomeTabLarge transactions={convertedArr} />
+    <Media
+      queries={{
+        mobile: '(max-width: 767px)',
+      }}
+    >
+      {({ mobile }) => (
+        <>
+          {mobile ? (
+            <HomeTabMobile transactions={convertedArr} />
+          ) : (
+            <HomeTabLarge transactions={convertedArr} />
+          )}
+        </>
       )}
-    </>
+    </Media>
   );
 }

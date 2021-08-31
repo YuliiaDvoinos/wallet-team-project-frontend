@@ -36,12 +36,12 @@ export default function Navigation() {
 
       <Media
         queries={{
-          small: '(max-width: 767px)',
+          mobile: '(max-width: 767px)',
         }}
       >
-        {matches => (
+        {({ mobile }) => (
           <>
-            {matches.small && (
+            {mobile && (
               <li className="nav__item">
                 <NavLink
                   to="/currency"

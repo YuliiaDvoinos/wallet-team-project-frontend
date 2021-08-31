@@ -1,4 +1,5 @@
 import './Chart.scss';
+
 export default function Chart({ statistics: { totalSpend } }) {
   return (
     <>

@@ -1,3 +1,4 @@
+import Media from 'react-media';
 import Navigation from '../../components/Sidebar/Navigation';
 import Currency from '../../components/Sidebar/Currency';
 import Balance from '../../components/Sidebar/Balance';
@@ -8,7 +9,13 @@ export default function Sidebar() {
     <aside>
       <Navigation />
       <Balance />
-      <Currency />
+      <Media
+        queries={{
+          tablet: '(min-width: 768px)',
+        }}
+      >
+        {({ tablet }) => <>{tablet && <Currency />}</>}
+      </Media>
     </aside>
   );
 }

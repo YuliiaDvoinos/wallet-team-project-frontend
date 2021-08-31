@@ -3,7 +3,7 @@ import { createArrCurrency } from './funcCreateArrCurrency';
 import Spinner from '../../Spinner';
 import './Currency.scss';
 
-const Currency = () => {
+export default function Currency() {
   const [USD, setUSD] = useState({ buy: '00.00', sale: '00.00' });
   const [EUR, setEUR] = useState({ buy: '00.00', sale: '00.00' });
   const [RUB, setRUB] = useState({ buy: '00.00', sale: '00.00' });
@@ -56,6 +56,4 @@ const Currency = () => {
       </div>
     </div>
   );
-};
-
-export default Currency;
+}

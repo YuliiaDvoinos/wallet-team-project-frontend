@@ -1,30 +1,29 @@
 @import 'styles/shared';
 
-@media screen and (min-width: 320px) {
-  .chart {
-    width: 280px;
-    height: 280px;
-    // margin: 10px auto 0 auto;
+.chart {
+  width: 280px;
+  height: 280px;
+  // margin: 10px auto 0 auto;
 
-    &__contents {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      border: 45px solid #fed057;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  &__contents {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: 45px solid #fed057;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    &__ballance {
-      @include font(18px, 26px);
-      color: $text-color;
-      font-family: $primary-font;
-      font-weight: bold;
-    }
+  &__ballance {
+    @include font(18px, 26px);
+    color: $text-color;
+    font-family: $primary-font;
+    font-weight: bold;
   }
 }
+
 @media screen and (min-width: 768px) {
   .chart {
     width: 320px;

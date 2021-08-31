@@ -1,55 +1,53 @@
 @import 'styles/shared.scss';
 
-@media screen and (min-width: 320px) {
-  .currency {
-    width: 280px;
-    &__title-list {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: $secondary-accent-color;
-      padding: 11px 20px 12px 20px;
-      border-radius: 30px 30px 0px 0px;
+.currency {
+  width: 280px;
+  &__title-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $secondary-accent-color;
+    padding: 11px 20px 12px 20px;
+    border-radius: 30px 30px 0px 0px;
 
-      &--title {
-        color: $secondary-text-color;
-        font-style: normal;
-        font-weight: 700;
-        @include font(16px, 27px);
-      }
-    }
-
-    &__prise-list {
-      display: flex;
-      justify-content: space-between;
-      @include font(16px, 24px);
-
-      &:not(:last-child) {
-        margin-bottom: 10px;
-      }
+    &--title {
+      color: $secondary-text-color;
+      font-style: normal;
+      font-weight: 700;
+      @include font(16px, 27px);
     }
   }
 
-  .prise-list-wrapper {
-    color: $secondary-text-color;
-    padding: 10px 20px 22px 20px;
-    background-color: $accent-color;
-    background-image: url('./currencyBg.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom;
-    border-radius: 0px 0px 30px 30px;
-  }
+  &__prise-list {
+    display: flex;
+    justify-content: space-between;
+    @include font(16px, 24px);
 
-  .blur-true {
-    position: relative;
-    filter: blur(3px);
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
   }
+}
 
-  .blur-false {
-    position: relative;
-    filter: none;
-  }
+.prise-list-wrapper {
+  color: $secondary-text-color;
+  padding: 10px 20px 22px 20px;
+  background-color: $accent-color;
+  background-image: url('./currencyBg.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  border-radius: 0px 0px 30px 30px;
+}
+
+.blur-true {
+  position: relative;
+  filter: blur(3px);
+}
+
+.blur-false {
+  position: relative;
+  filter: none;
 }
 
 @media screen and (min-width: 768px) {

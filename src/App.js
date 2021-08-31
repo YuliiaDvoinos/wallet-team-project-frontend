@@ -45,6 +45,10 @@ export default function App() {
         <PrivateRoute exact path={routes.statistics} redirectTo={routes.login}>
           <DashboardPage />
         </PrivateRoute>
+
+        <PrivateRoute exact path={routes.currency} redirectTo={routes.login}>
+          <DashboardPage />
+        </PrivateRoute>
       </Switch>
     </Suspense>
   );
