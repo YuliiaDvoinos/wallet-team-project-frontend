@@ -69,8 +69,9 @@ export default function Table({
         {categoriesSummary &&
           Object.keys(categoriesSummary).map((category, index) => (
             // statistics__item
+
             <li className="statistics__item" key={index}>
-              <span className="statistics__color"></span>
+              <span className="statistics__color "></span>
               {category}
               <span className="statistics__costs">
                 {categoriesSummary[category]}
