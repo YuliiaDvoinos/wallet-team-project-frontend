@@ -26,13 +26,15 @@ export const addTransactionsSuccess = createAction(
 export const addTransactionsError = createAction(
   'transactions/addTransactionsError',
 );
+
 //////////////////////////////////////////////////
-export const getStatisticsRequest = createAction(
-  'transactions/getStatisticsRequest',
+export const getQueryStatisticsRequest = createAction(
+  'transactions/getQueryStatisticsRequest',
 );
-export const getStatisticsSuccess = createAction(
-  'transactions/getStatisticsSuccess',
+export const getQueryStatisticsSuccess = createAction(
+  'transactions/getQueryStatisticsSuccess',
 );
-export const getStatisticsError = createAction(
-  'transactions/getStatisticsError',
+export const getQueryStatisticsError = createAction(
+  'transactions/getQueryStatisticsError',
 );
+

@@ -1,44 +1,58 @@
 import './Table.scss';
-
+import { useState, useCallback, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getQueryStatistics } from '../../../../redux/transactions/transactions-operations';
 export default function Table({
-  statistics: { categoriesSummary, totalSpend, totalIncome },
+  statistics: {
+    categoriesSummary,
+    totalSpend,
+    totalIncome,
+    uniqueMonth,
+    uniqueYear,
+  },
 }) {
+  const [filterData, setFilterData] = useState({
+    month: '',
+    year: '',
+  });
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getQueryStatistics(filterData));
+  }, [dispatch, filterData]);
+
+  const handleChange = useCallback(e => {
+    const {
+      currentTarget: { name, value },
+    } = e;
+    setFilterData(prev => ({ ...prev, [name]: value }));
+    
+  }, []);
   return (
     <div className="table">
       <div className="filter">
         <input
           className="filter__input"
           name="month"
+          value={filterData.month}
           list="months"
           placeholder="Месяц"
+          onChange={handleChange}
         />
         <datalist id="months">
-          <option value="01" />
-          <option value="02" />
-          <option value="03" />
-          <option value="04" />
-          <option value="05" />
-          <option value="06" />
-          <option value="07" />
-          <option value="08" />
-          <option value="09" />
-          <option value="10" />
-          <option value="11" />
-          <option value="12" />
+          {uniqueMonth && uniqueMonth.map(el => <option key={el} value={el} />)}
         </datalist>
 
         <input
           className="filter__input"
           name="year"
+          value={filterData.year}
           list="years"
           placeholder="Год"
+          onChange={handleChange}
         />
         <datalist id="years">
-          <option value="2021" />
-          <option value="2022" />
-          <option value="2023" />
-          <option value="2024" />
-          <option value="2025" />
+          {uniqueYear && uniqueYear.map(el => <option key={el} value={el} />)}
         </datalist>
       </div>
 

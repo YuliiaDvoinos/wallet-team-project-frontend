@@ -1,17 +1,12 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getAllStatistics } from '../../../redux/transactions/transactions-selectors';
-import { getStatistics } from '../../../redux/transactions/transactions-operations';
+import { useSelector } from 'react-redux';
+import { getAllQueryStatistics } from '../../../redux/transactions/transactions-selectors';
+
 import Chart from './Chart';
 import Table from './Table';
 import './DiagramTab.scss';
 
 export default function DiagramTab() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getStatistics());
-  }, [dispatch]);
-  const statistics = useSelector(getAllStatistics);
+  const statistics = useSelector(getAllQueryStatistics);
 
   return (
     <section className="diagram">
