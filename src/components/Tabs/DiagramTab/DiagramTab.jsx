@@ -15,13 +15,11 @@ export default function DiagramTab() {
 
   return (
     <section className="statistics">
-      <div className="statistics__container">
-        <h1 className="statistics__title">Статистика</h1>
-        <div className="statistics__data-container">
-          <Chart statistics={statistics} />
-          <Table statistics={statistics} />
-          {/* <Doughnut data={data} /> */}
-        </div>
+      <h1 className="statistics__title">Статистика</h1>
+      <div className="statistics__data-container">
+        <Chart statistics={statistics} />
+        <Table statistics={statistics} />
+        {/* <Doughnut data={data} /> */}
       </div>
     </section>
   );
