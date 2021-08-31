@@ -2,27 +2,51 @@
 
 .currency {
   width: 280px;
+  margin-bottom: 250px;
+
+  &__blur {
+    &-true {
+      position: relative;
+      filter: blur(3px);
+    }
+    &-false {
+      position: relative;
+      filter: none;
+    }
+  }
 
   &__title-list {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: $secondary-accent-color;
-    padding: 11px 20px 12px 20px;
     border-radius: 30px 30px 0px 0px;
-
-    &--title {
-      color: $secondary-text-color;
-      font-style: normal;
-      font-weight: 700;
-      @include font(16px, 27px);
-    }
+    padding: 11px 20px 12px 20px;
   }
 
-  &__prise-list {
+  &__title {
+    font-weight: 700;
+    @include font(16px, 27px);
+    color: $secondary-text-color;
+  }
+
+  &__price-list {
+    background-color: $accent-color;
+    background-image: url('./currencyBg.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    border-radius: 0px 0px 30px 30px;
+    padding: 10px 20px 22px 20px;
+  }
+
+  &__price {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    font-weight: 400;
     @include font(16px, 24px);
+    color: $secondary-text-color;
 
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -30,47 +54,27 @@
   }
 }
 
-.prise-list-wrapper {
-  color: $secondary-text-color;
-  padding: 10px 20px 22px 20px;
-  background-color: $accent-color;
-  background-image: url('./currencyBg.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
-  border-radius: 0px 0px 30px 30px;
-}
-
-.blur-true {
-  position: relative;
-  filter: blur(3px);
-}
-
-.blur-false {
-  position: relative;
-  filter: none;
-}
-
 @media screen and (min-width: 768px) {
   .currency {
     width: 334px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .currency {
-    width: 347px;
+    width: 348px;
 
     &__title-list {
-      padding: 16px 30px 17px 30px;
+      padding: 17px 30px 16px 30px;
     }
 
-    &__prise-list:not(:last-child) {
+    &__price-list {
+      padding: 20px 30px 149px 30px;
+    }
+
+    &__price:not(:last-child) {
       margin-bottom: 23px;
     }
-  }
-
-  .prise-list-wrapper {
-    padding: 20px 30px 150px 30px;
   }
 }
