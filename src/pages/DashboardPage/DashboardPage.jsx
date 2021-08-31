@@ -3,6 +3,7 @@ import routes from '../../routes';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import { HomeTab, DiagramTab } from '../../components/Tabs';
+import Currency from '../../components/Sidebar/Currency';
 import './DashboardPage.scss';
 
 export default function DashboardPage() {
@@ -17,6 +18,7 @@ export default function DashboardPage() {
               <Switch>
                 <Route path={routes.home} component={HomeTab} />
                 <Route path={routes.statistics} component={DiagramTab} />
+                <Route path={routes.currency} component={Currency} />
               </Switch>
             </main>
           </div>

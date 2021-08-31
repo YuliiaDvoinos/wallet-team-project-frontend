@@ -3,7 +3,7 @@ import { getIsModalAddTransactionOpen } from '../../../redux/transactions/transa
 import { ButtonAddTransaction, ModalAddTransaction } from '../../Transactions';
 import './HomeTabMobile.scss';
 
-function HomeTabMobile({ transactions }) {
+export default function HomeTabMobile({ transactions }) {
   const isModalAddTransactionOpen = useSelector(getIsModalAddTransactionOpen);
 
   const tableSpendClass = 'home-table__card home-table__card_spend';
@@ -53,5 +53,3 @@ function HomeTabMobile({ transactions }) {
     </>
   );
 }
-
-export default HomeTabMobile;

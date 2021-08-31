@@ -3,7 +3,7 @@ import { getIsModalAddTransactionOpen } from '../../../redux/transactions/transa
 import { ButtonAddTransaction, ModalAddTransaction } from '../../Transactions';
 import './HomeTabLarge.scss';
 
-function HomeTabLarge({ transactions }) {
+export default function HomeTabLarge({ transactions }) {
   const isModalAddTransactionOpen = useSelector(getIsModalAddTransactionOpen);
 
   const ItemSpendClass = 'home-table__cell home-table__cell_spend';
@@ -44,5 +44,3 @@ function HomeTabLarge({ transactions }) {
     </>
   );
 }
-
-export default HomeTabLarge;
