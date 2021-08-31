@@ -1,13 +1,13 @@
 @import 'styles/shared';
 
 @media screen and (min-width: 320px) {
-  .statistics__title {
+  .diagram__title {
     @include font(30px, 45px);
     font-family: $secondary-font;
     font-weight: normal;
     // margin-top: 43px;
   }
-  .statistics__data-container {
+  .diagram__data {
     margin-top: 10px;
   }
 }
@@ -16,7 +16,7 @@
   // .statistics__title {
   //   margin-top: 40px;
   // }
-  .statistics__data-container {
+  .diagram__data {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -24,17 +24,14 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .statistics {
+  .diagram {
     display: flex;
     flex-direction: column;
     width: 815px;
-    &__list {
-      width: 350px;
-      margin-top: 20px;
-    }
-    &__container {
+
+    &__data {
       width: 815px;
-      padding-left: 30px;
+      // padding-left: 30px;
       // border-left: 1px solid #e7e5f2;
       // box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       //   1px 0px 0px rgba(255, 255, 255, 0.6);
