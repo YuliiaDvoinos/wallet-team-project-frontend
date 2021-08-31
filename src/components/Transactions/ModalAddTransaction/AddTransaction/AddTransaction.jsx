@@ -15,33 +15,37 @@ import 'moment/locale/ru';
 import './AddTransaction.scss';
 
 export default function AddTransaction() {
-  // selectedOption
   const [selectedOption, setSelectedOption] = useState({
     value: null,
     label: '',
   });
-  // checked
-  const [checked, setChecked] = useState(true);
+
+  const [fullState, setFullState] = useState({
+    checked: true,
+    sum: '',
+    date: moment().format('DD.MM.YYYY'),
+    comment: '',
+    boxShadow: '0px 6px 15px rgba(255, 101, 150, 0.5)',
+  });
+
+  const { checked, sum, date, comment, boxShadow } = fullState;
+  const { value } = selectedOption;
+
   useEffect(() => {
     if (checked) {
-      setBoxShadowHandle('0px 6px 15px rgba(255, 101, 150, 0.5)');
+      setFullState(prev => ({
+        ...prev,
+        boxShadow: '0px 6px 15px rgba(255, 101, 150, 0.5)',
+      }));
       return;
     }
-    setBoxShadowHandle('0px 6px 15px rgba(36, 204, 167, 0.5)');
-  }, [checked]);
-  // boxShadow
-  const [boxShadow, setBoxShadowHandle] = useState(
-    '0px 6px 15px rgba(255, 101, 150, 0.5)',
-  );
-  // sum money
-  const [sum, setSum] = useState('');
-  // date
-  const today = moment().format('DD.MM.YYYY');
-  const [date, setDate] = useState(today);
-  // comment
-  const [comment, setComment] = useState('');
 
-  // HANDLE
+    setFullState(prev => ({
+      ...prev,
+      boxShadow: '0px 6px 15px rgba(36, 204, 167, 0.5)',
+    }));
+  }, [checked]);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,41 +53,40 @@ export default function AddTransaction() {
   }, [dispatch]);
   const categories = useSelector(getAllCategories);
 
-  // change
   const handleChange = e => {
     const { name, value } = e.target;
 
-    switch (name) {
-      case 'comment':
-        setComment(value);
-        break;
-
-      case 'sum':
-        setSum(value);
-        break;
-
-      case 'selectedOption':
-        setSelectedOption(value);
-        break;
-
-      default:
-        console.log('error');
-    }
+    setFullState(prev => ({
+      ...prev,
+      [name]: value,
+    }));
   };
+
   const handleChangeCheckbox = nextChecked => {
-    setChecked(nextChecked);
-    setSelectedOption({ selectedOption: { value: null, label: '' } });
-  };
-  const handleChangeDate = e => {
-    setDate(e.format('DD.MM.YYYY'));
+    setFullState(prev => ({
+      ...prev,
+      checked: nextChecked,
+      value: null,
+      label: '',
+    }));
   };
 
-  // modal close
+  const handleChangeDate = e => {
+    typeof e === 'string'
+      ? setFullState(prev => ({
+          ...prev,
+          date: e,
+        }))
+      : setFullState(prev => ({
+          ...prev,
+          date: e.format('DD.MM.YYYY'),
+        }));
+  };
+
   const closeModal = useCallback(() => {
     dispatch(closeModalTransaction());
   }, [dispatch]);
 
-  // submit
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
@@ -96,12 +99,12 @@ export default function AddTransaction() {
           money: Number(sum),
           comment,
           type: !checked ? 'income' : 'spend',
-          category: selectedOption.value,
+          category: value,
         }),
       );
       closeModal();
     },
-    [checked, comment, date, selectedOption.value, sum, closeModal, dispatch],
+    [checked, comment, date, value, sum, closeModal, dispatch],
   );
 
   const yesterday = moment().subtract(1, 'day');
@@ -196,6 +199,7 @@ export default function AddTransaction() {
                 value={sum}
                 onChange={handleChange}
                 type="text"
+                maxLength="6"
                 className="input sum__input"
                 placeholder="0.00"
               ></input>
