@@ -3,7 +3,6 @@ import { fetchData } from './fetchData';
 export async function createArrCurrency() {
   try {
     const req = await fetchData();
-    console.log(req);
     const data = [...req];
     data.pop();
     return data.map(({ ccy, buy, sale }) => ({

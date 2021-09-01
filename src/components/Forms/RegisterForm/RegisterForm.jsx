@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import toastr from 'toastr';
 import { register } from '../../../redux/auth/auth-operations';
 import { Link } from 'react-router-dom';
 import Icons from '../../Icons';
@@ -24,9 +25,10 @@ export default function RegisterForm() {
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
-      user.password === user.comparedPassword
+
+      user.password.toString() === user.comparedPassword.toString()
         ? dispatch(register(user))
-        : alert('Пароли не совпадают!');
+        : toastr.error('Пароли не совпадают!');
     },
     [dispatch, user],
   );
