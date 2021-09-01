@@ -18,14 +18,12 @@ export default function RegisterForm() {
   });
 
   const handleChange = useCallback(({ currentTarget: { name, value } }) => {
-    const normalizedValue = value.toLowerCase();
-    setUser(prev => ({ ...prev, [name]: normalizedValue }));
+    setUser(prev => ({ ...prev, [name]: value }));
   }, []);
 
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
-
       user.password === user.comparedPassword
         ? dispatch(register(user))
         : alert('Пароли не совпадают!');
@@ -49,8 +47,7 @@ export default function RegisterForm() {
             value={user.email}
             onChange={handleChange}
             placeholder="E-mail"
-            autoComplete="username"
-            pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,"
+            autoComplete="false"
           />
         </label>
 
@@ -65,7 +62,6 @@ export default function RegisterForm() {
             onChange={handleChange}
             placeholder="Пароль"
             autoComplete="new-password"
-            pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/"
           />
         </label>
 
