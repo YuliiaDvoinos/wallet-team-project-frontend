@@ -203,6 +203,7 @@ export default function AddTransaction() {
                 maxLength="6"
                 className="input sum__input"
                 placeholder="0.00"
+                required
               ></input>
             </label>
 
