@@ -41,7 +41,6 @@ export default function LoginForm() {
             onChange={handleChange}
             placeholder="E-mail"
             autoComplete="true"
-            pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,"
           />
         </label>
 
@@ -56,7 +55,6 @@ export default function LoginForm() {
             onChange={handleChange}
             placeholder="Пароль"
             autoComplete="true"
-            pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/"
           />
         </label>
 
