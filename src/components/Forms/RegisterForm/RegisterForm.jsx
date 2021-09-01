@@ -14,17 +14,21 @@ export default function RegisterForm() {
     name: '',
     email: '',
     password: '',
+    comparedPassword: '',
   });
 
   const handleChange = useCallback(({ currentTarget: { name, value } }) => {
-    setUser(prev => ({ ...prev, [name]: value }));
+    const normalizedValue = value.toLowerCase();
+    setUser(prev => ({ ...prev, [name]: normalizedValue }));
   }, []);
 
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
 
-      dispatch(register(user));
+      user.password === user.comparedPassword
+        ? dispatch(register(user))
+        : alert('Пароли не совпадают!');
     },
     [dispatch, user],
   );
@@ -38,47 +42,52 @@ export default function RegisterForm() {
         <label className="registerForm__label">
           <Icons id="email-icon" />
           <input
-            className="registerForm__input"
             required
+            className="registerForm__input"
             type="email"
             name="email"
             value={user.email}
             onChange={handleChange}
             placeholder="E-mail"
+            autoComplete="username"
+            pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,"
           />
         </label>
 
         <label className="registerForm__label">
           <Icons id="pass-icon" />
           <input
-            className="registerForm__input"
             required
+            className="registerForm__input"
             type="password"
             name="password"
             value={user.password}
             onChange={handleChange}
             placeholder="Пароль"
+            autoComplete="new-password"
+            pattern="/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/"
           />
         </label>
 
         <label className="registerForm__label">
           <Icons id="pass-icon" />
           <input
-            className="registerForm__input"
             required
+            className="registerForm__input"
             type="password"
-            name="password"
-            value={user.password}
+            name="comparedPassword"
+            value={user.comparedPassword}
             onChange={handleChange}
             placeholder="Подтвердите пароль"
+            autoComplete="false"
           />
         </label>
 
         <label className="registerForm__label">
           <Icons id="name-icon" />
           <input
-            className="registerForm__input"
             required
+            className="registerForm__input"
             type="text"
             name="name"
             value={user.name}

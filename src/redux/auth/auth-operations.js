@@ -21,6 +21,7 @@ export const register = registerFormData => async dispatch => {
     dispatch(actions.registerSuccess(data));
   } catch (error) {
     dispatch(actions.registerError(error.message));
+    alert(error.message);
   }
 };
 //////////////////////////////////////////////////
@@ -33,6 +34,7 @@ export const login = loginFormData => async dispatch => {
     dispatch(actions.loginSuccess(data));
   } catch (error) {
     dispatch(actions.loginError(error.message));
+    alert(error.message);
   }
 };
 //////////////////////////////////////////////////
@@ -45,6 +47,7 @@ export const logout = () => async dispatch => {
     dispatch(actions.logoutSuccess());
   } catch (error) {
     dispatch(actions.logoutError(error.message));
+    alert(error.message);
   }
 };
 //////////////////////////////////////////////////
@@ -62,5 +65,6 @@ export const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(actions.getCurrentUserSuccess(data));
   } catch (error) {
     dispatch(actions.getCurrentUserError(error.message));
+    alert(error.message);
   }
 };
