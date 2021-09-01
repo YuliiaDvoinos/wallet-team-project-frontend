@@ -12,7 +12,7 @@ export default function Balance() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentUser());
-  }, [dispatch, addedTransaction]);
+  }, [dispatch, addedTransaction, userBalance]);
 
   return (
     <div className="balance">

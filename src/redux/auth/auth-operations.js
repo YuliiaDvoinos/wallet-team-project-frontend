@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actions from './auth-actions';
+import toastr from 'toastr';
 
 axios.defaults.baseURL = 'https://wallet-tpb.herokuapp.com/api';
 
@@ -11,33 +12,45 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
-//////////////////////////////////////////////////
-export const register = registerFormData => async dispatch => {
-  dispatch(actions.registerRequest());
 
-  try {
-    const { data } = await axios.post('/users/register', registerFormData);
-    token.set(data.token);
-    dispatch(actions.registerSuccess(data));
-  } catch (error) {
-    dispatch(actions.registerError(error.message));
-    alert(error.message);
-  }
-};
-//////////////////////////////////////////////////
-export const login = loginFormData => async dispatch => {
-  dispatch(actions.loginRequest());
+export const register =
+  ({ name, email: fewEmail, password }) =>
+  async dispatch => {
+    dispatch(actions.registerRequest());
 
-  try {
-    const { data } = await axios.post('/users/login', loginFormData);
-    token.set(data.token);
-    dispatch(actions.loginSuccess(data));
-  } catch (error) {
-    dispatch(actions.loginError(error.message));
-    alert(error.message);
-  }
-};
-//////////////////////////////////////////////////
+    try {
+      const email = fewEmail.toLowerCase();
+      const { data } = await axios.post('/users/register', {
+        name,
+        email,
+        password,
+      });
+      token.set(data.token);
+      dispatch(actions.registerSuccess(data));
+      toastr.success('Регистрация выполнена!');
+    } catch (error) {
+      dispatch(actions.registerError(error.message));
+      toastr.error(error.message);
+    }
+  };
+
+export const login =
+  ({ email: fewEmail, password }) =>
+  async dispatch => {
+    dispatch(actions.loginRequest());
+
+    try {
+      const email = fewEmail.toLowerCase();
+      const { data } = await axios.post('/users/login', { email, password });
+      token.set(data.token);
+      dispatch(actions.loginSuccess(data));
+      toastr.success('Логинизация выполнена!');
+    } catch (error) {
+      dispatch(actions.loginError(error.message));
+      toastr.error(error.message);
+    }
+  };
+
 export const logout = () => async dispatch => {
   dispatch(actions.logoutRequest());
 
@@ -45,12 +58,13 @@ export const logout = () => async dispatch => {
     await axios.post('/users/logout');
     token.unset();
     dispatch(actions.logoutSuccess());
+    toastr.success('Выход выполнен!');
   } catch (error) {
     dispatch(actions.logoutError(error.message));
-    alert(error.message);
+    toastr.error(error.message);
   }
 };
-//////////////////////////////////////////////////
+
 export const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
@@ -65,6 +79,6 @@ export const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(actions.getCurrentUserSuccess(data));
   } catch (error) {
     dispatch(actions.getCurrentUserError(error.message));
-    alert(error.message);
+    toastr.error(error.message);
   }
 };

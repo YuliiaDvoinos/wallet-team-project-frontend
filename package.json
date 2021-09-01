@@ -25,9 +25,9 @@
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.38.0",
+    "toastr": "^2.1.4",
     "web-vitals": "^1.1.2"
   },
-  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
