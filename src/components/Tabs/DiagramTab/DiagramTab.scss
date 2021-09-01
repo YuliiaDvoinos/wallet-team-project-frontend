@@ -1,8 +1,6 @@
 @import 'styles/shared';
 
 .diagram {
-  // border: 1px solid black;
-
   &__title {
     @include font(30px, 45px);
     font-family: $secondary-font;

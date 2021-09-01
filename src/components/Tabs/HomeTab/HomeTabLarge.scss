@@ -2,7 +2,7 @@
 
 @media screen and(min-width:768px) {
   .home-table {
-    // border: 1px solid black;
+    width: 688px;
     color: $text-color;
 
     &__header {
@@ -68,5 +68,11 @@
         color: $income-color;
       }
     }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .home-table {
+    width: 700px;
   }
 }

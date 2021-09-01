@@ -6,11 +6,9 @@
 
   &__blur {
     &-true {
-      position: relative;
       filter: blur(3px);
     }
     &-false {
-      position: relative;
       filter: none;
     }
   }

@@ -46,7 +46,7 @@ export default function Table({
     const {
       currentTarget: { name, value },
     } = e;
-    
+
     setFilterData(prev => ({ ...prev, [name]: value }));
   }, []);
 
