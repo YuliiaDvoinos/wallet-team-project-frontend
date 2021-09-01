@@ -6,9 +6,12 @@ Additional description about the project and its features.
 
 ## Built With
 
-- Major language - ![](https://img.shields.io/badge/JavaScript-blueviolet)
-- Framework - ![](https://img.shields.io/badge/React-blueviolet)
-- Technologies used ![](https://img.shields.io/badge/react-redux-blueviolet)
+- Major language -
+ ![](https://img.shields.io/badge/JavaScript-blueviolet)
+- Framework 
+ ![](https://img.shields.io/badge/React-blueviolet)
+- Technologies used 
+  ![](https://img.shields.io/badge/react-redux-blueviolet)
   ![](https://img.shields.io/badge/@reduxjs-/toolkit-blueviolet)
   ![](https://img.shields.io/badge/redux-persist-blueviolet)
   ![](https://img.shields.io/badge/react-dom-blueviolet)
